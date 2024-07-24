@@ -5,7 +5,6 @@
 build
 
 .env
-app
 gradle
 .gitattributes
 gradle.properties
