@@ -13,34 +13,58 @@ import java.util.stream.Collectors;
 
 @Repository
 public class CredentialRepositoryImpl implements CredentialRepository {
-        
+
     public static final String DATA_FILE = "credentials.json";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public void save(Credential credential){
+    public void save(Credential credential) {
         List<Credential> credentials = readAll();
         credentials.removeIf(c -> c.getUserName().equals(credential.getUserName()));
         credentials.add(credential);
         writeAll(credentials);
     }
 
- 
+    @Override
+    public Optional<Credential> findByUsername(String username){
 
-    private List<Credential> readAll(){
-        
+        return readAll().stream()
+                        .filter(credential -> credential.getUserName().equals(username))
+                        .findFirst();
+    }
+
+    @Override
+    public List<Credential> findAll(){
+        return readAll();
+    }
+
+    private List<Credential> readAll() {
+
         File file = new File(DATA_FILE);
 
-        if(!file.exists())
+        if (!file.exists())
             return List.of();
 
-        try{
-            return objectMapper.readValue(file ,new TypeReference<List<Credential>>() {});
-        }catch(IOException e){
+        try {
+            return objectMapper.readValue(file, new TypeReference<List<Credential>>() {
+            });
+        } catch (IOException e) {
             e.printStackTrace();
             return List.of();
         }
+    }
+
+    private void writeAll(List<Credential> credentials) {
+
+        try{
+
+            objectMapper.writeValue(new File(DATA_FILE), credentials);
+
+        } catch(IOException e){
+
+            e.printStackTrace();
+        }
 
     }
-    
+
 }
