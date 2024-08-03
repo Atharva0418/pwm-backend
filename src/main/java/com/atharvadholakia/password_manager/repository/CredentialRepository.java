@@ -10,5 +10,5 @@ public interface CredentialRepository {
 
     Optional<Credential> findByUsername(String username);
 
-    List<Credential> findAll();
+    public List<Credential> findAll();
 }

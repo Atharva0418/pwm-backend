@@ -26,7 +26,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     }
 
     @Override
-    public Optional<Credential> findByUsername(String username){
+    public  Optional<Credential> findByUsername(String username){
 
         return readAll().stream()
                         .filter(credential -> credential.getUserName().equals(username))
