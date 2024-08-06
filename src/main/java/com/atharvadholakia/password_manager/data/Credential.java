@@ -1,10 +1,7 @@
 package com.atharvadholakia.password_manager.data;
 
-import org.springframework.data.annotation.Id;
-
 public class Credential {
 
-    @Id
     private String id;
 
     private String servicename;

@@ -23,16 +23,19 @@ public class CredentialController {
 
     @PostMapping
     public Credential createCredential(@RequestBody Credential credential){
+        System.out.println("inside createcredential");
         return credentialService.createCredential(credential.getServiceName(), credential.getUserName(), credential.getPassword(), credential.getId());
     }
 
     @GetMapping("/{username}")
     public Optional<Credential> getCredentialByUsername(@PathVariable String username){
+        System.out.println("inside getcredentialbyusername");
         return credentialService.getCredentialByUsername(username);
     }
 
     @GetMapping
     public List<Credential> getAllCredentials(){
+        System.out.println("inside getallcredentials");
         return credentialService.getAllCredential();
     }
 }
