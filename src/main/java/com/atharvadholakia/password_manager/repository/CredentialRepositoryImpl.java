@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Repository
 public class CredentialRepositoryImpl implements CredentialRepository {
@@ -39,19 +38,13 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     }
 
     private List<Credential> readAll() {
-        System.out.println("inside readAll");
 
         File file = new File(DATA_FILE);
 
-        System.out.println("file" + file);
-
         if (!file.exists()) {
-
-            System.out.println("if file exsits");
             return List.of();
         }
 
-        System.out.println("file exists");
         try {
             return objectMapper.readValue(file, new TypeReference<List<Credential>>() {
             });
