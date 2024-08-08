@@ -8,19 +8,19 @@ How to run the server locally:
 
     2. Install java 21 from [Oracle official website](https://www.oracle.com/in/java/technologies/downloads/#jdk21-windows). Download according to your OS. It is required to compile and run the project.
 
-    3. Install Gradle from [Gradle official website](https://gradle.org/install/#manually).Download the files according to your OS(click on "Binary-Only" to download). It is used for compiling, testing and packaging applications.
+    3. Install Gradle from [Gradle official website](https://gradle.org/install/#manually). Download the files according to your OS(click on "Binary-Only" to download). It is used for compiling, testing and packaging applications.
 
     4. Build gradle.
 
     ```bash
-            gradle build
+        gradle build
     ```
     Run this command.It compiles the project's source code, downloads necessary dependencies and builds the application.
 
     5. Bootrun with gradle.
 
     ```bash
-            gralde bootRun 
+        gradle bootRun 
     ```
     This command runs the Spring boot application. It starts the server locally on your machine.
 
