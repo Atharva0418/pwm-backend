@@ -1,26 +1,30 @@
-                            Password Manager
-This Password Manager project is a secure and user-friendly application built with the Spring Boot framework.
+# Password Manager
+
+Password Manager: A secure and user-friendly application built with the Spring Boot framework.
 It is designed to store and manage unique passwords so that you do not have to remember them.
 
-How to run the server locally:
+### How to run the server locally:
 
-    1. Clone the git repository from the Github to your local machine. You can do this by "git clone <repo url>" command.
+- Clone the git repository from the Github to your local machine. You can do this by
 
-    2. Install java 21 from [Oracle official website](https://www.oracle.com/in/java/technologies/downloads/#jdk21-windows). Download according to your OS. It is required to compile and run the project.
+  ```
+  git clone https://github.com/Atharva0418/pwm-backend.git
+  ```
 
-    3. Install Gradle from [Gradle official website](https://gradle.org/install/#manually). Download the files according to your OS(click on "Binary-Only" to download). It is used for compiling, testing and packaging applications.
+- Install java 21 from [Oracle official website](https://www.oracle.com/in/java/technologies/downloads/#jdk21-windows). Download according to your OS. It is required to compile and run the project.
 
-    4. Build gradle.
+- Install Gradle from [Gradle official website](https://gradle.org/install/#manually). Download the files according to your OS (click on "Binary-Only" to download). It is used for compiling, testing and packaging applications.
 
-    ```bash
-        gradle build
-    ```
-    Run this command.It compiles the project's source code, downloads necessary dependencies and builds the application.
+- To get it to live reload you need to have 2 terminals open. In first terminal, goto root of the project.
 
-    5. Bootrun with gradle.
+- Build gradle: Run the below command. It compiles the project's source code, downloads necessary dependencies and builds the application. Keep this terminal open as it looks for changes.
 
-    ```bash
-        gradle bootRun 
-    ```
-    This command runs the Spring boot application. It starts the server locally on your machine.
+  ```
+  gradle build --continuous
+  ```
 
+- Bootrun with gradle: Open second terminal, goto root of the project. Run the below command, it runs the Spring boot application. It starts the server locally on your machine.
+
+  ```
+  gradle bootRun
+  ```
