@@ -6,11 +6,21 @@ How to run the server locally:
 
     1. Clone the git repository from the Github to your local machine. You can do this by "git clone <repo url>" command.
 
-    2. Install java 21 from java official website. It is required to compile and run the project.
+    2. Install java 21 from [Java](https://www.oracle.com/in/java/technologies/downloads/#jdk21-windows) official website. Download according to your OS. It is required to compile and run the project.
 
-    3. Install Gradle from gralde official website. It is used for compiling, testing and packaging applications.
+    3. Install Gradle from [Gradle](https://gradle.org/install/#manually) official website.Download the files according to your OS(click on "Binary-Only" to download). It is used for compiling, testing and packaging applications.
 
-    4. "gradle build". Run this command. It compiles the project's source code, downloads necessary dependencies and builds the application.
+    4. Build gradle.
 
-    5. "gralde bootRun". This command runs the Spring boot application. It starts the server locally on your machine.
+    ```java
+            gradle build
+    ```
+    Run this command.It compiles the project's source code, downloads necessary dependencies and builds the application.
+
+    5. Bootrun with gradle.
+
+    ```java
+            gralde bootRun 
+    ```
+    This command runs the Spring boot application. It starts the server locally on your machine.
 
