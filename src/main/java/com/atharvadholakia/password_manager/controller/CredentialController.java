@@ -2,41 +2,37 @@ package com.atharvadholakia.password_manager.controller;
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.service.CredentialService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
-
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/credentials")
 public class CredentialController {
-    
-    private final CredentialService credentialService;
 
-    @Autowired
-    public CredentialController(CredentialService credentialService){
-        this.credentialService = credentialService;
-    }
+  private final CredentialService credentialService;
 
-    @PostMapping
-    public Credential createCredential(@RequestBody Credential credential){
-        System.out.println("inside createcredential");
-        return credentialService.createCredential(credential.getServiceName(), credential.getUserName(), credential.getPassword(), credential.getId());
-    }
+  @Autowired
+  public CredentialController(CredentialService credentialService) {
+    this.credentialService = credentialService;
+  }
 
-    @GetMapping("/{username}")
-    public Optional<Credential> getCredentialByUsername(@PathVariable String username){
-        System.out.println("inside getcredentialbyusername");
-        return credentialService.getCredentialByUsername(username);
-    }
+  @PostMapping
+  public Credential createCredential(@RequestBody Credential credential) {
+    return credentialService.createCredential(
+        credential.getServicename(),
+        credential.getUsername(),
+        credential.getPassword());
+  }
 
-    @GetMapping
-    public List<Credential> getAllCredentials(){
-        System.out.println("inside getallcredentials");
-        return credentialService.getAllCredential();
-    }
+  @GetMapping("/{id}")
+  public Optional<Credential> getCredentialById(@PathVariable String id) {
+    return credentialService.getCredentialById(id);
+  }
+
+  @GetMapping
+  public List<Credential> getAllCredentials() {
+    return credentialService.getAllCredential();
+  }
 }
-

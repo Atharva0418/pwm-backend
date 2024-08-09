@@ -8,6 +8,8 @@ import java.util.Optional;
 public interface CredentialRepository {
     void save(Credential credential);
 
+    Optional<Credential> findById(String id);
+
     Optional<Credential> findByUsername(String username);
 
     public List<Credential> findAll();

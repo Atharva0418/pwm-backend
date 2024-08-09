@@ -3,45 +3,41 @@ package com.atharvadholakia.password_manager.service;
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.exception.EntityNotFoundException;
 import com.atharvadholakia.password_manager.repository.CredentialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CredentialService {
 
-    private final CredentialRepository credentialRepository;
+  private final CredentialRepository credentialRepository;
 
-    @Autowired
-    public CredentialService(CredentialRepository credentialRepository) {
-        this.credentialRepository = credentialRepository;
+  @Autowired
+  public CredentialService(CredentialRepository credentialRepository) {
+    this.credentialRepository = credentialRepository;
+  }
+
+  public Credential createCredential(String servicename, String username, String password) {
+
+    if (credentialRepository.findByUsername(username).isPresent()) {
+      throw new IllegalArgumentException("Username already exists");
     }
 
-    public Credential createCredential(String username, String password, String servicename, String id){
+    Credential credential = new Credential(servicename, username, password);
 
-        if(credentialRepository.findByUsername(username).isPresent()){
-            throw new IllegalArgumentException("Username already exists");
-        }
+    credentialRepository.save(credential);
 
-        Credential credential = new Credential();
-        credential.setUsername(username);
-        credential.setPassword(password);
-        credential.setUsername(servicename);
-        credential.setId(id);
+    return credential;
+  }
 
-        credentialRepository.save(credential);
+  public Optional<Credential> getCredentialById(String id) {
+    return credentialRepository.findById(id);
+  }
 
-        return credential;
-    }
 
-    public Optional<Credential> getCredentialByUsername(String username){
-        return credentialRepository.findByUsername(username);
-    }
-
-    public List<Credential> getAllCredential(){
-        return credentialRepository.findAll();
-    }
-
+  public List<Credential> getAllCredential() {
+    return credentialRepository.findAll();
+  }
 }
