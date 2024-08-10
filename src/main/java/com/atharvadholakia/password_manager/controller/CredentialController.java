@@ -4,11 +4,14 @@ import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.service.CredentialService;
 import java.util.List;
 import java.util.Optional;
+// import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/credentials")
+@Validated
 public class CredentialController {
 
   private final CredentialService credentialService;
@@ -21,9 +24,7 @@ public class CredentialController {
   @PostMapping
   public Credential createCredential(@RequestBody Credential credential) {
     return credentialService.createCredential(
-        credential.getServicename(),
-        credential.getUsername(),
-        credential.getPassword());
+        credential.getServicename(), credential.getUsername(), credential.getPassword());
   }
 
   @GetMapping("/{id}")
