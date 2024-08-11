@@ -1,25 +1,19 @@
 package com.atharvadholakia.password_manager.data;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
-
-// import javax.validation.constraints.NotBlank;
 
 public class Credential {
 
-  @JsonProperty("id")
   private String id;
 
-  @JsonProperty("servicename")
-  // @NotBlank(message = "Servicename cannot be empty")
+  @NotBlank(message = "Servicename cannot be empty!")
   private String servicename;
 
-  @JsonProperty("username")
-  // @NotBlank(message = "Username cannot be empty")
+  @NotBlank(message = "Username cannot be empty!")
   private String username;
 
-  @JsonProperty("password")
-  // @NotBlank(message = "Password cannot be empty")
+  @NotBlank(message = "Password cannot be empty!")
   private String password;
 
   public Credential() {}

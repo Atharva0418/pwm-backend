@@ -28,17 +28,15 @@ public class CredentialRepositoryImpl implements CredentialRepository {
   @Override
   public Optional<Credential> findById(String id) {
 
-    return readAll().stream()
-        .filter(credential -> credential.getId().equals(id))
-        .findFirst();
+    return readAll().stream().filter(credential -> credential.getId().equals(id)).findFirst();
   }
 
-  @Override 
-  public Optional<Credential> findByUsername(String username){
+  @Override
+  public Optional<Credential> findByUsername(String username) {
 
     return readAll().stream()
-            .filter(credential -> credential.getUsername().equals(username))
-            .findFirst();
+        .filter(credential -> credential.getUsername().equals(username))
+        .findFirst();
   }
 
   @Override
