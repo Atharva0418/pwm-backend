@@ -15,9 +15,9 @@ public class CredentialService {
     this.credentialRepository = credentialRepository;
   }
 
-  public Credential createCredential(String servicename, String username, String password) {
+  public Credential createCredential(String serviceName, String username, String password) {
 
-    Credential credential = new Credential(servicename, username, password);
+    Credential credential = new Credential(serviceName, username, password);
 
     credentialRepository.save(credential);
 

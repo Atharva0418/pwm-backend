@@ -22,7 +22,7 @@ public class CredentialController {
   public ResponseEntity<Credential> createCredential(@Valid @RequestBody Credential credential) {
     Credential createdCredential =
         credentialService.createCredential(
-            credential.getServicename(), credential.getUsername(), credential.getPassword());
+            credential.getServiceName(), credential.getUsername(), credential.getPassword());
     return new ResponseEntity<>(createdCredential, HttpStatus.CREATED);
   }
 

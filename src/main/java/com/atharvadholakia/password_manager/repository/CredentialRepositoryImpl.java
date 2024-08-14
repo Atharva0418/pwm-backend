@@ -13,8 +13,7 @@ import org.springframework.stereotype.Repository;
 public class CredentialRepositoryImpl implements CredentialRepository {
 
   public static final String DATA_FILE =
-      "C:\\Atharva\\Java\\Password_manager\\pwm-backend\\src\\main\\java\\com\\atharvadholakia\\password_manager\\r"
-          + "epository\\credentials.json";
+      "C:\\Atharva\\Java\\Password_manager\\pwm-backend\\src\\main\\resources\\credentials.json";
   private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
@@ -32,7 +31,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
   }
 
   @Override
-  public Optional<Credential> findByUsername(String username) {
+  public Optional<Credential> findByUserName(String username) {
 
     return readAll().stream()
         .filter(credential -> credential.getUsername().equals(username))
@@ -53,8 +52,11 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     }
 
     try {
+
       return objectMapper.readValue(file, new TypeReference<List<Credential>>() {});
+
     } catch (IOException e) {
+
       e.printStackTrace();
       return List.of();
     }

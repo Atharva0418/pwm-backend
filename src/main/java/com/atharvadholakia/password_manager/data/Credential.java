@@ -8,7 +8,7 @@ public class Credential {
   private String id;
 
   @NotBlank(message = "Servicename cannot be empty!")
-  private String servicename;
+  private String serviceName;
 
   @NotBlank(message = "Username cannot be empty!")
   private String username;
@@ -18,9 +18,9 @@ public class Credential {
 
   public Credential() {}
 
-  public Credential(String servicename, String username, String password) {
-    this.id = UUID.randomUUID().toString().substring(0, 8);
-    this.servicename = servicename;
+  public Credential(String serviceName, String username, String password) {
+    this.id = UUID.randomUUID().toString();
+    this.serviceName = serviceName;
     this.username = username;
     this.password = password;
   }
@@ -29,8 +29,8 @@ public class Credential {
     return id;
   }
 
-  public String getServicename() {
-    return servicename;
+  public String getServiceName() {
+    return serviceName;
   }
 
   public String getUsername() {
@@ -53,7 +53,7 @@ public class Credential {
     this.password = password;
   }
 
-  public void setServicename(String servicename) {
-    this.servicename = servicename;
+  public void setServicename(String serviceName) {
+    this.serviceName = serviceName;
   }
 }
