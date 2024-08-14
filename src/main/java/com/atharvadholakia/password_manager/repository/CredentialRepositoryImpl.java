@@ -5,6 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Repository;
@@ -12,8 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CredentialRepositoryImpl implements CredentialRepository {
 
-  public static final String DATA_FILE =
-      "C:\\Atharva\\Java\\Password_manager\\pwm-backend\\src\\main\\resources\\credentials.json";
+  public static final Path DATA_FILE = Paths.get("src", "main", "resources", "credentials.json");
   private final ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
@@ -45,7 +46,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
 
   private List<Credential> readAll() {
 
-    File file = new File(DATA_FILE);
+    File file = DATA_FILE.toFile();
 
     if (!file.exists()) {
       return List.of();
@@ -66,7 +67,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
 
     try {
 
-      objectMapper.writeValue(new File(DATA_FILE), credentials);
+      objectMapper.writeValue(DATA_FILE.toFile(), credentials);
 
     } catch (IOException e) {
 

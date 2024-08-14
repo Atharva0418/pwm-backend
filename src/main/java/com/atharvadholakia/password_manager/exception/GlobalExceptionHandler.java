@@ -40,7 +40,10 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(Exception.class)
   public ResponseEntity<HashMap<String, String>> GenericExceptionHandler(Exception ex) {
     HashMap<String, String> response = new HashMap<>();
-    response.put("error", "an unexpected error occurred");
+    response.put(
+        "error",
+        "We're sorry, but something went wrong on our end. Please try again later. If the"
+            + " problem persists, please contact support.");
 
     return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
   }
