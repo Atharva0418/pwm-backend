@@ -1,5 +1,6 @@
 package com.atharvadholakia.password_manager.data;
 
+import com.atharvadholakia.password_manager.validation.annotation.ValidStringType;
 import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
@@ -8,12 +9,15 @@ public class Credential {
   private String id;
 
   @NotBlank(message = "Servicename cannot be empty!")
+  @ValidStringType(fieldName = "serviceName", message = "serviceName can only be a string")
   private String serviceName;
 
   @NotBlank(message = "Username cannot be empty!")
+  @ValidStringType(fieldName = "username", message = "username can only be a string")
   private String username;
 
   @NotBlank(message = "Password cannot be empty!")
+  @ValidStringType(fieldName = "password", message = "password can only be a string")
   private String password;
 
   public Credential() {}
