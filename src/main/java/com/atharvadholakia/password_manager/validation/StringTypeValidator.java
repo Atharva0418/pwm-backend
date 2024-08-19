@@ -22,7 +22,6 @@ public class StringTypeValidator implements ConstraintValidator<ValidStringType,
         || strValue.equalsIgnoreCase("true")
         || strValue.equalsIgnoreCase("false")
         || isNumeric(strValue)) {
-      System.out.println("Inside isValid\n");
       context.disableDefaultConstraintViolation();
       context
           .buildConstraintViolationWithTemplate(fieldName + " can only be a String")
