@@ -7,6 +7,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.service.CredentialService;
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,9 +24,15 @@ public class CredentialControllerTests {
 
   @MockBean private CredentialService credentialService;
 
+  private Credential credential;
+
+  @BeforeEach
+  public void setup() {
+    credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
+  }
+
   @Test
   public void testCreateCredential() throws Exception {
-    Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
     when(credentialService.createCredential("TestServiceName", "TestUsername", "TestPassword"))
         .thenReturn(credential);
 
@@ -44,7 +53,6 @@ public class CredentialControllerTests {
 
   @Test
   public void testGetCredentialById() throws Exception {
-    Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
     String id = credential.getId();
     when(credentialService.getCredentialById(id)).thenReturn(credential);
 
@@ -58,11 +66,28 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.username").value("TestUsername"))
         .andExpect(jsonPath("$.password").value("TestPassword"));
 
-    verify(credentialService).getCredentialById((id));
+    verify(credentialService).getCredentialById(id);
   }
 
-  //   @Test
-  //   public void testGetAllCredentials() throws Exception {
+  @Test
+  public void testGetAllCredentials() throws Exception {
+    Credential credential2 = new Credential("TestServiceName2", "TestUsername2", "TestPassword2");
+    List<Credential> credentials = Arrays.asList(credential, credential2);
 
-  //   }
+    when(credentialService.getAllCredential()).thenReturn(credentials);
+
+    mockMvc
+        .perform(get("http://localhost:3000/api/credentials").accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$[0].id").value(credential.getId()))
+        .andExpect(jsonPath("$[0].serviceName").value("TestServiceName"))
+        .andExpect(jsonPath("[0].username").value("TestUsername"))
+        .andExpect(jsonPath("[0].password").value("TestPassword"))
+        .andExpect(jsonPath("$[1].id").value(credential2.getId()))
+        .andExpect(jsonPath("$[1].serviceName").value("TestServiceName2"))
+        .andExpect(jsonPath("$[1].username").value("TestUsername2"))
+        .andExpect(jsonPath("$[1].password").value("TestPassword2"));
+
+    verify(credentialService).getAllCredential();
+  }
 }
