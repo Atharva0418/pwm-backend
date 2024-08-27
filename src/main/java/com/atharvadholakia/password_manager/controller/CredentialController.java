@@ -35,7 +35,7 @@ public class CredentialController {
 
   @GetMapping
   public ResponseEntity<List<Credential>> getAllCredentials() {
-    List<Credential> credentials = credentialService.getAllCredential();
+    List<Credential> credentials = credentialService.getAllCredentials();
     return new ResponseEntity<>(credentials, HttpStatus.OK);
   }
 }

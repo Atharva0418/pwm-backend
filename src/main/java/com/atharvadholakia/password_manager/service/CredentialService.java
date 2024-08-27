@@ -30,7 +30,7 @@ public class CredentialService {
         .orElseThrow(() -> new ResourceNotFoundException("Credential not found with ID " + id));
   }
 
-  public List<Credential> getAllCredential() {
+  public List<Credential> getAllCredentials() {
     return credentialRepository.findAll();
   }
 }

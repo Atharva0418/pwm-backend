@@ -21,9 +21,9 @@ public class GlobalExceptionHandler {
         .getAllErrors()
         .forEach(
             (error) -> {
-              String FieldName = ((FieldError) error).getField();
+              String fieldName = ((FieldError) error).getField();
               String message = error.getDefaultMessage();
-              response.put(FieldName, message);
+              response.put(fieldName, message);
             });
 
     return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

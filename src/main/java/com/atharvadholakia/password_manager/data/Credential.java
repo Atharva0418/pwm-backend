@@ -8,15 +8,15 @@ public class Credential {
 
   private String id;
 
-  @NotBlank(message = "Servicename cannot be empty!")
+  @NotBlank(message = "serviceName cannot be empty!")
   @ValidStringType(fieldName = "serviceName", message = "serviceName can only be a string")
   private String serviceName;
 
-  @NotBlank(message = "Username cannot be empty!")
+  @NotBlank(message = "username cannot be empty!")
   @ValidStringType(fieldName = "username", message = "username can only be a string")
   private String username;
 
-  @NotBlank(message = "Password cannot be empty!")
+  @NotBlank(message = "password cannot be empty!")
   @ValidStringType(fieldName = "password", message = "password can only be a string")
   private String password;
 

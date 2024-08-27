@@ -9,6 +9,8 @@ import static org.mockito.Mockito.when;
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.repository.CredentialRepository;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,5 +60,20 @@ public class CredentialServiceTests {
     assertEquals(testCredential.getPassword(), result.get().getPassword());
 
     verify(credentialRepository).findById(id);
+  }
+
+  @Test
+  public void testGetAllCredential() throws Exception {
+    Credential testCredential2 =
+        new Credential("TestServiceName1", "TestUsername1", "TestPassword1");
+
+    List<Credential> expectedCredentials = Arrays.asList(testCredential, testCredential2);
+    when(credentialRepository.findAll()).thenReturn(expectedCredentials);
+
+    List<Credential> actualCredentials = credentialService.getAllCredentials();
+
+    assertEquals(expectedCredentials, actualCredentials);
+
+    verify(credentialRepository).findAll();
   }
 }

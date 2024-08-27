@@ -24,7 +24,7 @@ public class StringTypeValidator implements ConstraintValidator<ValidStringType,
         || isNumeric(strValue)) {
       context.disableDefaultConstraintViolation();
       context
-          .buildConstraintViolationWithTemplate(fieldName + " can only be a String")
+          .buildConstraintViolationWithTemplate(fieldName + " can only be a string")
           .addConstraintViolation();
       return false;
     }
