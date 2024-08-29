@@ -80,9 +80,9 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.serviceName").exists())
         .andExpect(jsonPath("$.username").exists())
         .andExpect(jsonPath("$.password").exists())
-        .andExpect(jsonPath("$.serviceName").value("serviceName can only be a string"))
-        .andExpect(jsonPath("$.username").value("username can only be a string"))
-        .andExpect(jsonPath("$.password").value("password can only be a string"));
+        .andExpect(jsonPath("$.serviceName").value("serviceName can only be a string."))
+        .andExpect(jsonPath("$.username").value("username can only be a string."))
+        .andExpect(jsonPath("$.password").value("password can only be a string."));
   }
 
   @Test
