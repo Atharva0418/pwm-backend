@@ -137,7 +137,7 @@ public class CredentialControllerTests {
   }
 
   @Test
-  public void testGetAllCredentials_Empty() throws Exception {
+  public void testGetAllCredentials_EmptyList() throws Exception {
     when(credentialService.getAllCredentials()).thenReturn(Collections.emptyList());
 
     mockMvc

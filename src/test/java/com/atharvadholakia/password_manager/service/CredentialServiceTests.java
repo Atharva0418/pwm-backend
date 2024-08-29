@@ -1,15 +1,19 @@
 package com.atharvadholakia.password_manager.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.atharvadholakia.password_manager.data.Credential;
+import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
 import com.atharvadholakia.password_manager.repository.CredentialRepository;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -63,7 +67,17 @@ public class CredentialServiceTests {
   }
 
   @Test
-  public void testGetAllCredential() throws Exception {
+  public void testGetCredentialById_NotFound() throws Exception {
+    String id = "invalidId";
+    when(credentialRepository.findById(id)).thenReturn(Optional.empty());
+
+    assertThrows(ResourceNotFoundException.class, () -> credentialService.getCredentialById(id));
+
+    verify(credentialRepository, times(1)).findById(id);
+  }
+
+  @Test
+  public void testGetAllCredentials() throws Exception {
     Credential testCredential2 =
         new Credential("TestServiceName1", "TestUsername1", "TestPassword1");
 
@@ -73,6 +87,17 @@ public class CredentialServiceTests {
     List<Credential> actualCredentials = credentialService.getAllCredentials();
 
     assertEquals(expectedCredentials, actualCredentials);
+
+    verify(credentialRepository).findAll();
+  }
+
+  @Test
+  public void testGetAllCredentials_EmptyList() throws Exception {
+    when(credentialRepository.findAll()).thenReturn(Collections.emptyList());
+
+    List<Credential> credential = credentialService.getAllCredentials();
+
+    assertTrue(credential.isEmpty());
 
     verify(credentialRepository).findAll();
   }
