@@ -2,10 +2,12 @@ package com.atharvadholakia.password_manager.controller;
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.service.CredentialService;
-import jakarta.validation.Valid;
+import com.atharvadholakia.password_manager.validation.group.ValidationSequence;
+// import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +21,8 @@ public class CredentialController {
   }
 
   @PostMapping
-  public ResponseEntity<Credential> createCredential(@Valid @RequestBody Credential credential) {
+  public ResponseEntity<Credential> createCredential(
+      @Validated(ValidationSequence.class) @RequestBody Credential credential) {
     credential.setServicename(credential.getServiceName().trim());
     Credential createdCredential =
         credentialService.createCredential(

@@ -11,7 +11,6 @@ import com.atharvadholakia.password_manager.service.CredentialService;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -26,16 +25,10 @@ public class CredentialControllerTests {
 
   @MockBean private CredentialService credentialService;
 
-  private Credential credential;
-
-  @BeforeEach
-  public void setup() {
-    credential = new Credential("TestserviceName", "Testusername", "Testpassword");
-  }
-
   @Test
   public void testCreateCredential() throws Exception {
-    when(credentialService.createCredential("TestserviceName", "Testusername", "Testpassword"))
+    Credential credential = new Credential("TestserviceName", "Testusername", "Testpassword@1");
+    when(credentialService.createCredential("TestserviceName", "Testusername", "Testpassword@1"))
         .thenReturn(credential);
 
     mockMvc
@@ -44,18 +37,18 @@ public class CredentialControllerTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     "{\"serviceName\":\"TestserviceName\", \"username\":\"Testusername\","
-                        + " \"password\":\"Testpassword\"}"))
+                        + " \"password\":\"Testpassword@1\"}"))
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.serviceName").value("TestserviceName"))
         .andExpect(jsonPath("$.username").value("Testusername"))
-        .andExpect(jsonPath("$.password").value("Testpassword"));
+        .andExpect(jsonPath("$.password").value("Testpassword@1"));
 
-    verify(credentialService).createCredential("TestserviceName", "Testusername", "Testpassword");
+    verify(credentialService).createCredential("TestserviceName", "Testusername", "Testpassword@1");
   }
 
   @Test
   public void testCreateCredential_NullInputs() throws Exception {
-    String nullInputs = "{\"serviceName\" : null , \"usernamame\" : null, \"password\" : null}";
+    String nullInputs = "{\"serviceName\" : null , \"username\" : null, \"password\" : null}";
 
     mockMvc
         .perform(
@@ -86,7 +79,29 @@ public class CredentialControllerTests {
   }
 
   @Test
+  public void testCreateCredential_LessSizeInput() throws Exception {
+    String lessSizeInput =
+        "{\"serviceName\" : \"uN\" , \"username\" : \"uN\" , \"password\" : \"pwrd\" }";
+
+    mockMvc
+        .perform(
+            post("/api/credentials").contentType(MediaType.APPLICATION_JSON).content(lessSizeInput))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.serviceName").exists())
+        .andExpect(jsonPath("$.username").exists())
+        .andExpect(jsonPath("$.password").exists())
+        .andExpect(
+            jsonPath("$.serviceName").value("serviceName must be between 3 to 25 characters."))
+        .andExpect(jsonPath("$.username").value("username must be between 3 to 25 characters."))
+        .andExpect(jsonPath("$.password").value("password must be between 8 to 25 characters."));
+  }
+
+  @Test
+  public void testCreateCredential_LargeSizeInput() throws Exception {}
+
+  @Test
   public void testGetCredentialById() throws Exception {
+    Credential credential = new Credential("TestserviceName", "Testusername", "Testpassword@1");
     String id = credential.getId();
     when(credentialService.getCredentialById(id)).thenReturn(credential);
 
@@ -96,7 +111,7 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.id").value(id))
         .andExpect(jsonPath("$.serviceName").value("TestserviceName"))
         .andExpect(jsonPath("$.username").value("Testusername"))
-        .andExpect(jsonPath("$.password").value("Testpassword"));
+        .andExpect(jsonPath("$.password").value("Testpassword@1"));
 
     verify(credentialService).getCredentialById(id);
   }
@@ -115,8 +130,9 @@ public class CredentialControllerTests {
 
   @Test
   public void testGetAllCredentials() throws Exception {
-    Credential credential2 = new Credential("TestserviceName2", "Testusername2", "Testpassword2");
-    List<Credential> credentials = Arrays.asList(credential, credential2);
+    Credential credential1 = new Credential("TestserviceName1", "Testusername1", "Testpassword@11");
+    Credential credential2 = new Credential("TestserviceName2", "Testusername2", "Testpassword@12");
+    List<Credential> credentials = Arrays.asList(credential1, credential2);
 
     when(credentialService.getAllCredentials()).thenReturn(credentials);
 
@@ -124,14 +140,14 @@ public class CredentialControllerTests {
         .perform(get("/api/credentials").accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-        .andExpect(jsonPath("$[0].id").value(credential.getId()))
-        .andExpect(jsonPath("$[0].serviceName").value("TestserviceName"))
-        .andExpect(jsonPath("[0].username").value("Testusername"))
-        .andExpect(jsonPath("[0].password").value("Testpassword"))
+        .andExpect(jsonPath("$[0].id").value(credential1.getId()))
+        .andExpect(jsonPath("$[0].serviceName").value("TestserviceName1"))
+        .andExpect(jsonPath("[0].username").value("Testusername1"))
+        .andExpect(jsonPath("[0].password").value("Testpassword@11"))
         .andExpect(jsonPath("$[1].id").value(credential2.getId()))
         .andExpect(jsonPath("$[1].serviceName").value("TestserviceName2"))
         .andExpect(jsonPath("$[1].username").value("Testusername2"))
-        .andExpect(jsonPath("$[1].password").value("Testpassword2"));
+        .andExpect(jsonPath("$[1].password").value("Testpassword@12"));
 
     verify(credentialService).getAllCredentials();
   }
