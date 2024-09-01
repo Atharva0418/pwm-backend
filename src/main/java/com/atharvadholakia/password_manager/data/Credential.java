@@ -43,7 +43,7 @@ public class Credential {
 
   public Credential(String serviceName, String username, String password) {
     this.id = UUID.randomUUID().toString();
-    this.serviceName = serviceName;
+    this.serviceName = serviceName.trim();
     this.username = username;
     this.password = password;
   }

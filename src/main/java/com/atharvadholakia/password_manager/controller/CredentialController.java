@@ -20,7 +20,6 @@ public class CredentialController {
 
   @PostMapping
   public ResponseEntity<Credential> createCredential(@Valid @RequestBody Credential credential) {
-    credential.setServicename(credential.getServiceName().trim());
     Credential createdCredential =
         credentialService.createCredential(
             credential.getServiceName(), credential.getUsername(), credential.getPassword());
