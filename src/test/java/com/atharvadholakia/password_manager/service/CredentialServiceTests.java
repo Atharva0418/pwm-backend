@@ -28,40 +28,40 @@ public class CredentialServiceTests {
 
   @InjectMocks private CredentialService credentialService;
 
-  private Credential testCredential;
-
   @BeforeEach
   public void setup() {
     MockitoAnnotations.openMocks(this);
-    testCredential = new Credential("TestServiceName", "TestUsername", "TestPassword");
   }
 
   @Test
   public void testCreateCredential() throws Exception {
+
+    Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
 
     doNothing().when(credentialRepository).save(any(Credential.class));
 
     Credential result =
         credentialService.createCredential("TestServiceName", "TestUsername", "TestPassword");
 
-    assertEquals(testCredential.getServiceName(), result.getServiceName());
-    assertEquals(testCredential.getUsername(), result.getUsername());
-    assertEquals(testCredential.getPassword(), result.getPassword());
+    assertEquals(credential.getServiceName(), result.getServiceName());
+    assertEquals(credential.getUsername(), result.getUsername());
+    assertEquals(credential.getPassword(), result.getPassword());
 
     verify(credentialRepository).save(result);
   }
 
   @Test
   public void testGetCredentialById() throws Exception {
-    String id = testCredential.getId();
-    when(credentialRepository.findById(id)).thenReturn(Optional.of(testCredential));
+    Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
+    String id = credential.getId();
+    when(credentialRepository.findById(id)).thenReturn(Optional.of(credential));
 
     Optional<Credential> result = credentialRepository.findById(id);
 
     assertTrue(result.isPresent());
-    assertEquals(testCredential.getServiceName(), result.get().getServiceName());
-    assertEquals(testCredential.getUsername(), result.get().getUsername());
-    assertEquals(testCredential.getPassword(), result.get().getPassword());
+    assertEquals(credential.getServiceName(), result.get().getServiceName());
+    assertEquals(credential.getUsername(), result.get().getUsername());
+    assertEquals(credential.getPassword(), result.get().getPassword());
 
     verify(credentialRepository).findById(id);
   }
@@ -78,10 +78,10 @@ public class CredentialServiceTests {
 
   @Test
   public void testGetAllCredentials() throws Exception {
-    Credential testCredential2 =
-        new Credential("TestServiceName1", "TestUsername1", "TestPassword1");
+    Credential credential1 = new Credential("TestServiceName1", "TestUsername1", "TestPassword1");
+    Credential credential2 = new Credential("TestServiceName2", "TestUsername2", "TestPassword2");
 
-    List<Credential> expectedCredentials = Arrays.asList(testCredential, testCredential2);
+    List<Credential> expectedCredentials = Arrays.asList(credential1, credential2);
     when(credentialRepository.findAll()).thenReturn(expectedCredentials);
 
     List<Credential> actualCredentials = credentialService.getAllCredentials();
