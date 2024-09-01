@@ -1,5 +1,6 @@
 package com.atharvadholakia.password_manager.controller;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -74,9 +75,9 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.serviceName").exists())
         .andExpect(jsonPath("$.username").exists())
         .andExpect(jsonPath("$.password").exists())
-        .andExpect(jsonPath("$.serviceName").value("serviceName cannot be empty!"))
-        .andExpect(jsonPath("$.username").value("username cannot be empty!"))
-        .andExpect(jsonPath("$.password").value("password cannot be empty!"));
+        .andExpect(jsonPath("$.serviceName").value("Servicename cannot be empty!"))
+        .andExpect(jsonPath("$.username").value("Username cannot be empty!"))
+        .andExpect(jsonPath("$.password").value("Password cannot be empty!"));
   }
 
   @Test
@@ -90,14 +91,23 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.serviceName").exists())
         .andExpect(jsonPath("$.username").exists())
         .andExpect(jsonPath("$.password").exists())
-        .andExpect(jsonPath("$.serviceName").value("serviceName can only be a string."))
-        .andExpect(jsonPath("$.username").value("username can only be a string."))
-        .andExpect(jsonPath("$.password").value("password can only be a string."));
+        .andExpect(jsonPath("$.serviceName").value("Servicename can only be a string."))
+        .andExpect(jsonPath("$.username").value("Username can only be a string."))
+        .andExpect(jsonPath("$.password").value(containsString("Password can only be a string.")))
+        .andExpect(
+            jsonPath("$.password")
+                .value(containsString("Password must be between 8 to 25 characters.")))
+        .andExpect(
+            jsonPath("$.password")
+                .value(
+                    containsString(
+                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
+                            + " character and no spaces.")));
   }
 
   @Test
   public void testCreateCredential_LessSizeInput() throws Exception {
-    String lessSizeInput = createJsonInput("sN", "uN", "pwrd");
+    String lessSizeInput = createJsonInput("$N", "uN", "pwrd");
 
     mockMvc
         .perform(
@@ -107,9 +117,26 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.username").exists())
         .andExpect(jsonPath("$.password").exists())
         .andExpect(
-            jsonPath("$.serviceName").value("serviceName must be between 3 to 25 characters."))
-        .andExpect(jsonPath("$.username").value("username must be between 3 to 25 characters."))
-        .andExpect(jsonPath("$.password").value("password must be between 8 to 25 characters."));
+            jsonPath("$.serviceName")
+                .value(containsString("Servicename must be between 3 to 25 characters.")))
+        .andExpect(
+            jsonPath("$.serviceName")
+                .value(
+                    containsString(
+                        "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and"
+                            + " spaces are allowed.")))
+        .andExpect(
+            jsonPath("$.username")
+                .value(containsString("Username must be between 3 to 25 characters.")))
+        .andExpect(
+            jsonPath("$.password")
+                .value(containsString("Password must be between 8 to 25 characters.")))
+        .andExpect(
+            jsonPath("$.password")
+                .value(
+                    containsString(
+                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
+                            + " character and no spaces.")));
   }
 
   @Test
@@ -130,9 +157,17 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.username").exists())
         .andExpect(jsonPath("$.password").exists())
         .andExpect(
-            jsonPath("$.serviceName").value("serviceName must be between 3 to 25 characters."))
-        .andExpect(jsonPath("$.username").value("username must be between 3 to 25 characters."))
-        .andExpect(jsonPath("$.password").value("password must be between 8 to 25 characters."));
+            jsonPath("$.serviceName").value("Servicename must be between 3 to 25 characters."))
+        .andExpect(jsonPath("$.username").value("Username must be between 3 to 25 characters."))
+        .andExpect(
+            jsonPath("$.password")
+                .value(containsString("Password must be between 8 to 25 characters.")))
+        .andExpect(
+            jsonPath("$.password")
+                .value(
+                    containsString(
+                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
+                            + " character and no spaces.")));
   }
 
   @Test
@@ -151,17 +186,17 @@ public class CredentialControllerTests {
         .andExpect(
             jsonPath("$.serviceName")
                 .value(
-                    "Invalid charactes. Only alphanumerics, dots, underscores, hypens and spaces"
+                    "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and spaces"
                         + " are allowed."))
         .andExpect(
             jsonPath("$.username")
                 .value(
-                    "Invalid characters. Only aphanumerics, dots, underscores and hypens are"
+                    "Invalid characters. Only alphanumerics, dots, underscores and hyphens are"
                         + " allowed."))
         .andExpect(
             jsonPath("$.password")
                 .value(
-                    "password must include 1 uppercase, 1 lowercase, 1 digit, 1 special charatcer"
+                    "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special character"
                         + " and no spaces."));
   }
 
