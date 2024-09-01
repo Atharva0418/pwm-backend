@@ -20,7 +20,7 @@ public class Credential {
   @Pattern(
       regexp = "^[a-zA-Z0-9._\\- ]+$",
       message =
-          "Invalid charactes. Only alphanumerics, dots, underscores, hypens and spaces are"
+          "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and spaces are"
               + " allowed.",
       groups = ThirdGroup.class)
   @ValidStringType(
@@ -37,7 +37,8 @@ public class Credential {
       groups = SecondGroup.class)
   @Pattern(
       regexp = "^[a-zA-Z0-9._]+$",
-      message = "Invalid characters. Only aphanumerics, dots, underscores and hypens are allowed.",
+      message =
+          "Invalid characters. Only alphanumerics, dots, underscores and hyphens are allowed.",
       groups = ThirdGroup.class)
   @ValidStringType(
       fieldName = "username",
@@ -54,7 +55,7 @@ public class Credential {
   @Pattern(
       regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$",
       message =
-          "password must include 1 uppercase, 1 lowercase, 1 digit, 1 special charatcer"
+          "password must include 1 uppercase, 1 lowercase, 1 digit, 1 special character"
               + " and no spaces.",
       groups = ThirdGroup.class)
   @ValidStringType(

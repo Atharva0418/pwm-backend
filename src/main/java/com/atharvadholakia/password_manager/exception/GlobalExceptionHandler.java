@@ -45,14 +45,14 @@ public class GlobalExceptionHandler {
     return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
   }
 
-  // @ExceptionHandler(Exception.class)
-  // public ResponseEntity<HashMap<String, String>> handleGenericException(Exception ex) {
-  //   HashMap<String, String> response = new HashMap<>();
-  //   response.put(
-  //       "error",
-  //       "We're sorry, but something went wrong on our end. Please try again later. If the"
-  //           + " problem persists, please contact support.");
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<HashMap<String, String>> handleGenericException(Exception ex) {
+    HashMap<String, String> response = new HashMap<>();
+    response.put(
+        "error",
+        "We're sorry, but something went wrong on our end. Please try again later. If the"
+            + " problem persists, please contact support.");
 
-  //   return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-  // }
+    return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+  }
 }
