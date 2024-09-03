@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding = "UTF-8">
+<configuration>
+    <springProperty name = "LOG_FILE" source = "LOG_FILE" defaultValue="logs/application.log"/>
+
+    <appender name = "CONSOLE" class ="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <providers>
+                <timestampProvider timezone = "IST"/>
+                <logLevelProvider/>
+                <threadNameProvider/>
+                <loggerNameProvider/>
+                <messageProvider/>
+                <mdcProvider/>
+                <stackTraceProvider/>
+            </providers>
+        </encoder>
+    </appender>
+
+    <appender name = "ROLLING_FILE" class = "ch.qoa.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}</file>
+        <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <providers>
+                <timestampProvider timezone = "Asia/Kolkata"/>
+                <logLeverProvider/>
+                <threadNameProvider/>
+                <loggerNameProvider/>
+                <messageProvider/>
+                <mdcProvider/>
+                <stackTraceProvider/>
+            </encoder>
+        </appender>
+
+        <springProfile name = "dev">
+            <root level="DEBUG">
+                <appender-ref ref="CONSOLE"/>
+                <appender-ref ref="ROLLING_FILE"/>
+            </root>
+        </springProfile>
+
+        <springProfile name="prod">
+            <root level = "INFO">
+                <appender-ref ref = "CONSOLE"/>
+                <appender-ref ref = "ROLLING_FILE"/>
+            </root>
+        </springProfile>
+
+        <root level = "INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING_FILE"/>
+        </root>
+
+    </configuration>
