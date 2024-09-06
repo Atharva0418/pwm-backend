@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.hibernate.validator:hibernate-validator:8.0.1.Final'
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation 'org.springframework.boot:spring-boot-starter-logging'
+	implementation 'net.logstash.logback:logstash-logback-encoder:8.0'
 	testImplementation 'org.hamcrest:hamcrest:2.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -38,10 +39,5 @@ tasks.named('test') {
 bootRun {
     classpath = sourceSets.main.runtimeClasspath + configurations.developmentOnly
 	sourceResources sourceSets.main
-    if (project.hasProperty('profiles')) {
-		environment SPRING_PROFILES_ACTIVE: profiles
-	} else {
-		def profiles = 'local'
-		environment SPRING_PROFILES_ACTIVE: profiles
-	}
+
 }

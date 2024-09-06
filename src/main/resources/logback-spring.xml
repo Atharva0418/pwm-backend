@@ -1,58 +1,31 @@
-<?xml version="1.0" encoding = "UTF-8">
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <springProperty name = "LOG_FILE" source = "LOG_FILE" defaultValue="logs/application.log"/>
-
-    <appender name = "CONSOLE" class ="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
-            <providers>
-                <timestampProvider timezone = "IST"/>
-                <logLevelProvider/>
-                <threadNameProvider/>
-                <loggerNameProvider/>
-                <messageProvider/>
-                <mdcProvider/>
-                <stackTraceProvider/>
-            </providers>
-        </encoder>
-    </appender>
-
-    <appender name = "ROLLING_FILE" class = "ch.qoa.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}</file>
-        <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>30</maxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
-            <providers>
-                <timestampProvider timezone = "Asia/Kolkata"/>
-                <logLeverProvider/>
-                <threadNameProvider/>
-                <loggerNameProvider/>
-                <messageProvider/>
-                <mdcProvider/>
-                <stackTraceProvider/>
+    <springProfile name ="dev">
+        <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH-mm-ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
             </encoder>
         </appender>
 
-        <springProfile name = "dev">
-            <root level="DEBUG">
-                <appender-ref ref="CONSOLE"/>
-                <appender-ref ref="ROLLING_FILE"/>
-            </root>
-        </springProfile>
+        <logger name="org.springframework" level="OFF"/>
+        <logger name="org.apache" level="OFF"/>
+        <logger name="org.hibernate.validator" level="OFF"/>
 
-        <springProfile name="prod">
-            <root level = "INFO">
-                <appender-ref ref = "CONSOLE"/>
-                <appender-ref ref = "ROLLING_FILE"/>
-            </root>
-        </springProfile>
+        <appender name = "ROLLING_FILE" class = "ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/application.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>logs/application-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>10</maxHistory>
+            </rollingPolicy>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
 
-        <root level = "INFO">
+        </appender>
+
+        <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="ROLLING_FILE"/>
         </root>
+    </springProfile>
 
-    </configuration>
+</configuration>
+
