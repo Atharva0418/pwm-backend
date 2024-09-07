@@ -4,17 +4,15 @@ import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.service.CredentialService;
 import jakarta.validation.Valid;
 import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/credentials")
+@Slf4j
 public class CredentialController {
-
-  private static final Logger logger = LoggerFactory.getLogger(CredentialController.class);
 
   private final CredentialService credentialService;
 
@@ -24,7 +22,7 @@ public class CredentialController {
 
   @PostMapping
   public ResponseEntity<Credential> createCredential(@Valid @RequestBody Credential credential) {
-    logger.debug(
+    log.debug(
         "Creating Credential with Servicename: {}, Username: {}, Password: {}.",
         credential.getServiceName(),
         credential.getUsername(),
@@ -32,7 +30,7 @@ public class CredentialController {
     Credential createdCredential =
         credentialService.createCredential(
             credential.getServiceName(), credential.getUsername(), credential.getPassword());
-    logger.info(
+    log.info(
         "Created Credential with Servicename: {}, Username: {}, Password: {}.",
         credential.getServiceName(),
         credential.getUsername(),
