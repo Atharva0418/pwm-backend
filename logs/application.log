@@ -1,913 +1,145 @@
-2024-09-07 11-59-56 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 11-59-56 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 12040 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 11-59-56 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 11-59-56 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 11-59-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 18-48-20 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2024-09-07 18-48-20 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 8172 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
+2024-09-07 18-48-20 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-07 18-48-20 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
+2024-09-07 18-48-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
 	{GET [/api/credentials]}: getAllCredentials()
+	{GET [/api/credentials/{id}]}: getCredentialById(String)
 	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 11-59-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 18-48-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	c.a.p.c.HelloFromPasswordManager:
 	{GET [/sayhello]}: sayHello()
-2024-09-07 11-59-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 18-48-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	o.s.b.a.w.s.e.BasicErrorController:
 	{ [/error]}: error(HttpServletRequest)
 	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 11-59-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 11-59-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 11-59-57 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.077 seconds (process running for 1.294)
-2024-09-07 12-01-35 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-01-35 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 21440 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-01-35 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-01-35 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-01-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 18-48-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
+2024-09-07 18-48-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2024-09-07 18-48-21 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.176 seconds (process running for 1.412)
+2024-09-07 18-48-26 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Fetching all credentials
+2024-09-07 18-48-26 [http-nio-3000-exec-1] INFO  c.a.p.service.CredentialService - Calling Repository to get all the credentials
+2024-09-07 18-48-26 [http-nio-3000-exec-1] INFO  c.a.p.service.CredentialService - Successfuly fetched 3 credentials
+2024-09-07 18-48-26 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Successfully fetched 3 credentials
+2024-09-07 18-48-49 [http-nio-3000-exec-2] INFO  c.a.p.c.CredentialController - Creating a credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
+2024-09-07 18-48-49 [http-nio-3000-exec-2] INFO  c.a.p.service.CredentialService - Attempting to create a credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1
+2024-09-07 18-48-49 [http-nio-3000-exec-2] INFO  c.a.p.service.CredentialService - Successfully stored the credential with ID: a913b0d6-f581-4679-be7c-96fd58e452a9
+2024-09-07 18-48-49 [http-nio-3000-exec-2] INFO  c.a.p.c.CredentialController - Successfully created Credential with ID: a913b0d6-f581-4679-be7c-96fd58e452a9
+2024-09-07 18-50-53 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2024-09-07 18-50-53 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 19972 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
+2024-09-07 18-50-53 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-07 18-50-53 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
+2024-09-07 18-50-53 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
 	{POST [/api/credentials]}: createCredential(Credential)
 	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-01-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	{GET [/api/credentials/{id}]}: getCredentialById(String)
+2024-09-07 18-50-53 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	c.a.p.c.HelloFromPasswordManager:
 	{GET [/sayhello]}: sayHello()
-2024-09-07 12-01-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 18-50-53 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	o.s.b.a.w.s.e.BasicErrorController:
 	{ [/error]}: error(HttpServletRequest)
 	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-01-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-01-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-01-36 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.227 seconds (process running for 1.451)
-2024-09-07 12-01-43 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-01-43 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-01-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 21440 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-01-47 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-01-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-01-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 18-50-53 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
+2024-09-07 18-50-53 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2024-09-07 18-50-53 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.143 seconds (process running for 1.381)
+2024-09-07 18-50-58 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Creating a credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
+2024-09-07 18-50-58 [http-nio-3000-exec-1] TRACE c.a.p.service.CredentialService - Entering createCredential method in service
+2024-09-07 18-50-58 [http-nio-3000-exec-1] INFO  c.a.p.service.CredentialService - Attempting to create a credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1
+2024-09-07 18-50-58 [http-nio-3000-exec-1] TRACE c.a.p.service.CredentialService - Entering repository to store the credential with ID: fca32816-2fdd-4fd9-ad3c-0601da4234aa
+2024-09-07 18-50-58 [http-nio-3000-exec-1] INFO  c.a.p.service.CredentialService - Successfully stored the credential with ID: fca32816-2fdd-4fd9-ad3c-0601da4234aa
+2024-09-07 18-50-58 [http-nio-3000-exec-1] TRACE c.a.p.service.CredentialService - Exiting createCredential method in service
+2024-09-07 18-50-58 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Successfully created Credential with ID: fca32816-2fdd-4fd9-ad3c-0601da4234aa
+2024-09-07 18-52-26 [http-nio-3000-exec-5] INFO  c.a.p.c.CredentialController - Fetching credential with ID: 541251ec-0b84-4037-bab3-
+2024-09-07 18-52-26 [http-nio-3000-exec-5] TRACE c.a.p.service.CredentialService - Entering getCredentialById method in service
+2024-09-07 18-52-26 [http-nio-3000-exec-5] INFO  c.a.p.service.CredentialService - Attempting to fetch credential with ID: 541251ec-0b84-4037-bab3-
+2024-09-07 18-52-26 [http-nio-3000-exec-5] ERROR c.a.p.service.CredentialService - Credential not found with ID: 541251ec-0b84-4037-bab3- 
+com.atharvadholakia.password_manager.exception.ResourceNotFoundException: Credential not found with ID 541251ec-0b84-4037-bab3-
+	at com.atharvadholakia.password_manager.service.CredentialService.lambda$getCredentialById$1(CredentialService.java:49)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.atharvadholakia.password_manager.service.CredentialService.getCredentialById(CredentialService.java:47)
+	at com.atharvadholakia.password_manager.controller.CredentialController.getCredentialById(CredentialController.java:40)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-09-07 19-17-54 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
+2024-09-07 19-17-54 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 13436 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
+2024-09-07 19-17-54 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
+2024-09-07 19-17-54 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
+2024-09-07 19-17-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
 	{POST [/api/credentials]}: createCredential(Credential)
 	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-01-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+	{GET [/api/credentials/{id}]}: getCredentialById(String)
+2024-09-07 19-17-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	c.a.p.c.HelloFromPasswordManager:
 	{GET [/sayhello]}: sayHello()
-2024-09-07 12-01-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
+2024-09-07 19-17-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
 	o.s.b.a.w.s.e.BasicErrorController:
 	{ [/error]}: error(HttpServletRequest)
 	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-01-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-01-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-01-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.348 seconds (process running for 12.964)
-2024-09-07 12-14-46 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-14-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 24984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-14-46 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-14-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-14-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-14-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-14-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-14-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-14-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-14-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.078 seconds (process running for 1.311)
-2024-09-07 12-14-56 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-14-56 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-15-00 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 24984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-15-00 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-15-00 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-15-00 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-15-00 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-15-00 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-15-00 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-15-00 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-15-00 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.18 seconds (process running for 14.635)
-2024-09-07 12-19-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 24984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-19-46 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-19-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-19-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-19-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-19-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-19-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-19-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-19-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.356 seconds (process running for 300.979)
-2024-09-07 12-22-19 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 24984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-22-19 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-22-19 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-22-19 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-22-19 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-22-19 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-22-19 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-22-19 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-22-19 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.158 seconds (process running for 453.742)
-2024-09-07 12-22-26 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 24984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-22-26 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-22-26 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-22-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-22-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-22-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-22-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-22-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-22-26 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.139 seconds (process running for 460.971)
-2024-09-07 12-22-53 [http-nio-3000-exec-3] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-22-53 [http-nio-3000-exec-3] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-22-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 24984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-22-55 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-22-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-22-56 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-22-56 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-22-56 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-22-56 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-22-56 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-22-56 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.137 seconds (process running for 490.423)
-2024-09-07 12-23-55 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-23-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-23-55 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-23-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-23-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-23-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-23-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-23-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-23-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-23-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.102 seconds (process running for 1.331)
-2024-09-07 12-24-00 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-24-00 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-24-02 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-24-02 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-24-02 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-24-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-24-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-24-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-24-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-24-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-24-03 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.191 seconds (process running for 8.599)
-2024-09-07 12-24-26 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-24-26 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-24-26 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-24-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-24-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-24-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-24-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-24-26 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-24-26 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.145 seconds (process running for 31.958)
-2024-09-07 12-24-31 [http-nio-3000-exec-3] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-24-31 [http-nio-3000-exec-3] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-24-33 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-24-33 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-24-33 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-24-33 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-24-33 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-24-33 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-24-33 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-24-33 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-24-33 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.143 seconds (process running for 39.196)
-2024-09-07 12-24-57 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-24-57 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-24-57 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-24-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-24-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-24-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-24-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-24-57 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-24-57 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.145 seconds (process running for 62.593)
-2024-09-07 12-25-00 [http-nio-3000-exec-6] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-25-00 [http-nio-3000-exec-6] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-25-04 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-25-04 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-25-04 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-25-04 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-25-04 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-25-04 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-25-04 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-25-04 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-25-04 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.274 seconds (process running for 69.984)
-2024-09-07 12-25-45 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-25-45 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-25-45 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-25-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-25-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-25-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-25-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-25-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-25-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.147 seconds (process running for 111.559)
-2024-09-07 12-25-48 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-25-48 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-25-51 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 23732 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-25-51 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-25-51 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-25-51 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-25-51 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-25-51 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-25-51 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-25-51 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-25-51 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.175 seconds (process running for 116.847)
-2024-09-07 12-26-10 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-26-10 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 3648 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-26-10 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-26-10 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-26-10 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-26-10 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-26-10 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-26-10 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-26-10 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-26-11 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.095 seconds (process running for 1.321)
-2024-09-07 12-26-14 [http-nio-3000-exec-3] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-26-14 [http-nio-3000-exec-3] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-26-18 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 3648 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-26-18 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-26-18 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-26-18 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-26-18 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-26-18 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-26-18 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-26-18 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-26-18 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.176 seconds (process running for 8.582)
-2024-09-07 12-26-43 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-26-43 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 33332 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-26-43 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-26-43 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-26-44 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-2024-09-07 12-26-44 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-26-44 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-26-44 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-26-44 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-26-44 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.036 seconds (process running for 1.282)
-2024-09-07 12-26-51 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-26-51 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-26-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 33332 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-26-55 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-26-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-26-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-2024-09-07 12-26-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-26-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-26-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-26-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-26-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.172 seconds (process running for 12.577)
-2024-09-07 12-52-38 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-52-38 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-52-38 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-52-38 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-52-39 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-52-39 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-52-39 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-52-39 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-52-39 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-52-39 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.034 seconds (process running for 1.257)
-2024-09-07 12-52-43 [http-nio-3000-exec-10] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-52-43 [http-nio-3000-exec-10] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-52-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-52-46 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-52-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-52-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-52-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-52-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-52-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-52-46 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-52-46 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.172 seconds (process running for 8.516)
-2024-09-07 12-53-31 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-53-31 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-53-34 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-53-34 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-53-34 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-53-34 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-53-34 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-53-34 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-53-34 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-53-34 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-53-34 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.152 seconds (process running for 56.181)
-2024-09-07 12-54-25 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-54-25 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-54-25 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-54-25 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-54-25 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-54-25 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-54-25 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-54-25 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-54-25 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.146 seconds (process running for 107.91)
-2024-09-07 12-54-33 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-54-33 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-54-37 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-54-37 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-54-37 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-54-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-54-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-54-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-54-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-54-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-54-37 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.145 seconds (process running for 119.186)
-2024-09-07 12-55-36 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-55-36 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-55-36 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-55-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-55-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-55-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-55-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-55-36 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-55-36 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.155 seconds (process running for 178.936)
-2024-09-07 12-55-37 [http-nio-3000-exec-3] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-55-37 [http-nio-3000-exec-3] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-55-40 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 37600 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-55-40 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-55-40 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-55-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 12-55-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-55-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-55-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-55-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-55-40 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.168 seconds (process running for 182.167)
-2024-09-07 12-55-58 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-55-58 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 29984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-55-58 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-55-58 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-55-59 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-2024-09-07 12-55-59 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-55-59 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-55-59 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-55-59 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-55-59 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.155 seconds (process running for 1.388)
-2024-09-07 12-56-04 [http-nio-3000-exec-2] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-56-04 [http-nio-3000-exec-2] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-56-08 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 29984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-56-08 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-56-08 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-56-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-2024-09-07 12-56-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-56-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-56-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-56-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-56-08 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.177 seconds (process running for 10.648)
-2024-09-07 12-56-29 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 29984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-56-29 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-56-29 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-56-29 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-2024-09-07 12-56-29 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-56-29 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-56-29 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-56-29 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-56-29 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.147 seconds (process running for 31.967)
-2024-09-07 12-56-34 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-56-34 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-56-36 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 29984 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-56-36 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-56-36 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-56-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-2024-09-07 12-56-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-56-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-56-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-56-37 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-56-37 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.17 seconds (process running for 39.235)
-2024-09-07 12-56-58 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-56-58 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 25920 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-56-58 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-56-58 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-56-58 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-56-58 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-56-58 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-56-58 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-56-58 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-56-58 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.116 seconds (process running for 1.343)
-2024-09-07 12-57-02 [http-nio-3000-exec-2] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-57-02 [http-nio-3000-exec-2] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1972.
-2024-09-07 12-57-06 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 25920 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-57-06 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-57-06 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-57-06 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-57-06 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-57-06 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-57-06 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-57-06 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-57-06 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.186 seconds (process running for 8.596)
-2024-09-07 12-57-39 [http-nio-3000-exec-2] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 12-57-39 [http-nio-3000-exec-2] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 12-57-41 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 25920 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-57-41 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-57-41 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-57-41 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-57-41 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-57-41 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-57-41 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-57-41 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-57-41 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.333 seconds (process running for 44.363)
-2024-09-07 12-58-21 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 25920 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-58-21 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-58-21 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-58-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-58-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-58-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-58-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-58-21 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-58-21 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.153 seconds (process running for 83.951)
-2024-09-07 12-58-22 [http-nio-3000-exec-7] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 12-58-22 [http-nio-3000-exec-7] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 12-58-24 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 25920 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-58-24 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-58-24 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-58-24 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-58-24 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-58-24 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-58-24 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-58-24 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-58-24 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.144 seconds (process running for 87.145)
-2024-09-07 12-58-39 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 12-58-39 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 36828 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-58-39 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-58-39 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-58-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-58-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-58-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-58-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-58-40 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-58-40 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.137 seconds (process running for 1.361)
-2024-09-07 12-58-44 [http-nio-3000-exec-2] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 12-58-44 [http-nio-3000-exec-2] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 12-58-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 36828 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 12-58-47 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 12-58-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 12-58-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 12-58-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 12-58-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 12-58-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 12-58-47 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 12-58-47 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.19 seconds (process running for 8.613)
-2024-09-07 13-03-03 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 36828 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 13-03-03 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 13-03-03 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 13-03-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 13-03-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 13-03-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 13-03-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 13-03-03 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 13-03-03 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.148 seconds (process running for 264.288)
-2024-09-07 13-03-06 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 13-03-08 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 36828 (C:\Atharva\Java\Password_manager\pwm-backend\build\classes\java\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 13-03-08 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 13-03-08 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 13-03-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 13-03-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 13-03-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 13-03-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 13-03-08 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 13-03-08 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.15 seconds (process running for 269.502)
-2024-09-07 13-15-57 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 13-15-57 [Test worker] INFO  c.a.p.PasswordManagerApplicationTests - Starting PasswordManagerApplicationTests using Java 21.0.2 with PID 24300 (started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 13-15-57 [Test worker] DEBUG c.a.p.PasswordManagerApplicationTests - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 13-15-57 [Test worker] INFO  c.a.p.PasswordManagerApplicationTests - The following 1 profile is active: "dev"
-2024-09-07 13-15-58 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 13-15-58 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 13-15-58 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 13-15-58 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 13-15-58 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 13-15-58 [Test worker] INFO  c.a.p.PasswordManagerApplicationTests - Started PasswordManagerApplicationTests in 1.041 seconds (process running for 1.849)
-2024-09-07 13-15-58 [Test worker] INFO  c.a.p.c.CredentialControllerTests - Starting CredentialControllerTests using Java 21.0.2 with PID 24300 (started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 13-15-58 [Test worker] DEBUG c.a.p.c.CredentialControllerTests - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 13-15-58 [Test worker] INFO  c.a.p.c.CredentialControllerTests - The following 1 profile is active: "dev"
-2024-09-07 13-15-59 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-	{POST [/api/credentials]}: createCredential(Credential)
-2024-09-07 13-15-59 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 13-15-59 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 13-15-59 [Test worker] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 13-15-59 [Test worker] INFO  c.a.p.c.CredentialControllerTests - Started CredentialControllerTests in 0.361 seconds (process running for 2.733)
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['id']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['error']
-2024-09-07 13-15-59 [Test worker] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: TestserviceName, Username: Testusername, Password: Testpassword@1.
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[0]['id']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[0]['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[0]['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[0]['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[1]['id']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[1]['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[1]['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $[1]['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['serviceName']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['username']
-2024-09-07 13-15-59 [Test worker] DEBUG c.j.j.internal.path.CompiledPath - Evaluating path: $['password']
-2024-09-07 13-17-21 [background-preinit] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Slf4jLoggerProvider found via system property
-2024-09-07 13-17-21 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 3732 (C:\Atharva\Java\Password_manager\pwm-backend\bin\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 13-17-21 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 13-17-21 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 13-17-22 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 13-17-22 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 13-17-22 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 13-17-22 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 13-17-22 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 13-17-22 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.448 seconds (process running for 1.73)
-2024-09-07 13-17-27 [http-nio-3000-exec-1] DEBUG c.a.p.c.CredentialController - Creating Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 13-17-27 [http-nio-3000-exec-1] INFO  c.a.p.c.CredentialController - Created Credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
-2024-09-07 13-17-32 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Starting PasswordManagerApplication using Java 21.0.2 with PID 3732 (C:\Atharva\Java\Password_manager\pwm-backend\bin\main started by 108WS in C:\Atharva\Java\Password_manager\pwm-backend)
-2024-09-07 13-17-32 [restartedMain] DEBUG c.a.p.PasswordManagerApplication - Running with Spring Boot v3.3.3, Spring v6.1.12
-2024-09-07 13-17-32 [restartedMain] INFO  c.a.p.PasswordManagerApplication - The following 1 profile is active: "dev"
-2024-09-07 13-17-32 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.CredentialController:
-	{POST [/api/credentials]}: createCredential(Credential)
-	{GET [/api/credentials/{id}]}: getCredentialById(String)
-	{GET [/api/credentials]}: getAllCredentials()
-2024-09-07 13-17-32 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	c.a.p.c.HelloFromPasswordManager:
-	{GET [/sayhello]}: sayHello()
-2024-09-07 13-17-32 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 
-	o.s.b.a.w.s.e.BasicErrorController:
-	{ [/error]}: error(HttpServletRequest)
-	{ [/error], produces [text/html]}: errorHtml(HttpServletRequest,HttpServletResponse)
-2024-09-07 13-17-32 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
-2024-09-07 13-17-32 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
-2024-09-07 13-17-32 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 0.233 seconds (process running for 11.044)
+2024-09-07 19-17-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'beanNameHandlerMapping' {}
+2024-09-07 19-17-55 [restartedMain] DEBUG _.s.w.s.HandlerMapping.Mappings - 'resourceHandlerMapping' {/webjars/**=ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]], /**=ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]}
+2024-09-07 19-17-55 [restartedMain] INFO  c.a.p.PasswordManagerApplication - Started PasswordManagerApplication in 1.189 seconds (process running for 1.441)
+2024-09-07 19-17-59 [http-nio-3000-exec-3] INFO  c.a.p.c.CredentialController - Fetching all credentials
+2024-09-07 19-17-59 [http-nio-3000-exec-3] INFO  c.a.p.service.CredentialService - Calling Repository to get all the credentials
+2024-09-07 19-17-59 [http-nio-3000-exec-3] TRACE c.a.p.r.CredentialRepositoryImpl - Entering findAll method in repository
+2024-09-07 19-17-59 [http-nio-3000-exec-3] TRACE c.a.p.r.CredentialRepositoryImpl - Entering readAll method in the repository
+2024-09-07 19-17-59 [http-nio-3000-exec-3] WARN  c.a.p.r.CredentialRepositoryImpl - Data file src\main\resources\credential.json not does not exist, returning empty list
+2024-09-07 19-17-59 [http-nio-3000-exec-3] INFO  c.a.p.r.CredentialRepositoryImpl - Found 0 credentials in the json file
+2024-09-07 19-17-59 [http-nio-3000-exec-3] INFO  c.a.p.service.CredentialService - Successfuly fetched 0 credentials
+2024-09-07 19-17-59 [http-nio-3000-exec-3] INFO  c.a.p.c.CredentialController - Successfully fetched 0 credentials
+2024-09-07 19-18-27 [http-nio-3000-exec-6] INFO  c.a.p.c.CredentialController - Creating a credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1.
+2024-09-07 19-18-27 [http-nio-3000-exec-6] TRACE c.a.p.service.CredentialService - Entering createCredential method in service
+2024-09-07 19-18-27 [http-nio-3000-exec-6] INFO  c.a.p.service.CredentialService - Attempting to create a credential with Servicename: Bank, Username: Chintal98, Password: Ath@rva1
+2024-09-07 19-18-27 [http-nio-3000-exec-6] TRACE c.a.p.service.CredentialService - Entering repository to store the credential with ID: e7f621ed-b088-4a9c-af58-c54fac33dfd5
+2024-09-07 19-18-27 [http-nio-3000-exec-6] TRACE c.a.p.r.CredentialRepositoryImpl - Entering the save method in repository
+2024-09-07 19-18-27 [http-nio-3000-exec-6] TRACE c.a.p.r.CredentialRepositoryImpl - Entering readAll method in the repository
+2024-09-07 19-18-27 [http-nio-3000-exec-6] WARN  c.a.p.r.CredentialRepositoryImpl - Data file src\main\resources\credential.json not does not exist, returning empty list
+2024-09-07 19-18-27 [http-nio-3000-exec-6] DEBUG c.a.p.r.CredentialRepositoryImpl - Read 0 credentials from the json file

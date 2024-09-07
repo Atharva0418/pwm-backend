@@ -25,7 +25,7 @@
 
         </appender>
 
-        <root level="DEBUG">
+        <root level="TRACE">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="ROLLING_FILE"/>
         </root>
