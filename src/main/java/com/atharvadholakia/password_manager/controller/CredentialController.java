@@ -38,11 +38,8 @@ public class CredentialController {
   public ResponseEntity<Credential> getCredentialById(@PathVariable String id) {
     log.info("Fetching credential with ID: {}", id);
     Credential credential = credentialService.getCredentialById(id);
-    if (credential != null) {
-      log.info("Found credential with ID: {}", id);
-    } else {
-      log.warn("Credential with ID: {} not found", id);
-    }
+
+    log.info("Found credential with ID: {}", id);
 
     return new ResponseEntity<>(credential, HttpStatus.OK);
   }

@@ -18,43 +18,27 @@ public class CredentialService {
   }
 
   public Credential createCredential(String serviceName, String username, String password) {
-    log.trace("Entering createCredential method in service");
-    log.info(
-        "Attempting to create a credential with Servicename: {}, Username: {}, Password: {}",
-        serviceName,
-        username,
-        password);
     Credential credential = new Credential(serviceName, username, password);
 
-    log.trace("Entering repository to store the credential with ID: {}", credential.getId());
+    log.debug("Calling repository from service");
     credentialRepository.save(credential);
 
-    log.info("Successfully stored the credential with ID: {}", credential.getId());
     log.trace("Exiting createCredential method in service");
     return credential;
   }
 
   public Credential getCredentialById(String id) {
-    log.trace("Entering getCredentialById method in service");
-    log.info("Attempting to fetch credential with ID: {}", id);
+    log.debug("Calling repository from service");
     return credentialRepository
         .findById(id)
-        .map(
-            credential -> {
-              log.debug("Credential found with ID: {}", id);
-              return credential;
-            })
         .orElseThrow(
             () -> {
-              log.error("Credential not found with ID: {} ", id);
               return new ResourceNotFoundException("Credential not found with ID " + id);
             });
   }
 
   public List<Credential> getAllCredentials() {
-    log.info("Calling Repository to get all the credentials");
-    List<Credential> credentials = credentialRepository.findAll();
-    log.info("Successfuly fetched {} credentials", credentials.size());
-    return credentials;
+    log.debug("Calling Repository to get all the credentials");
+    return credentialRepository.findAll();
   }
 }

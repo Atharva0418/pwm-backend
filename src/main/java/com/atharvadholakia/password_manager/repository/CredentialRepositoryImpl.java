@@ -23,13 +23,10 @@ public class CredentialRepositoryImpl implements CredentialRepository {
   public void save(Credential credential) {
     log.trace("Entering the save method in repository");
     List<Credential> credentials = readAll();
-    log.debug("Read {} credentials from the json file", credentials.size());
     credentials.removeIf(c -> c.getUsername().equals(credential.getUsername()));
-    log.debug("Removed any exisitng credential with username: {}", credential.getUsername());
     credentials.add(credential);
-    log.debug("Added the credential with ID: {} to the list", credential.getId());
     writeAll(credentials);
-    log.info("Successfully saved the credential with ID: {} in json file", credential.getId());
+    log.debug("Successfully saved the credential with ID: {} in json file", credential.getId());
   }
 
   @Override
@@ -39,9 +36,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     Optional<Credential> credential =
         readAll().stream().filter(c -> c.getId().equals(id)).findFirst();
 
-    if (credential.isPresent()) {
-      log.debug("Credential found with ID: {}", id);
-    } else {
+    if (!credential.isPresent()) {
       log.warn("Credential not found with ID: {}", id);
     }
 
@@ -59,10 +54,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
   @Override
   public List<Credential> findAll() {
     log.trace("Entering findAll method in repository");
-    List<Credential> credentials = readAll();
-    log.info("Found {} credentials in the json file", credentials.size());
-
-    return credentials;
+    return readAll();
   }
 
   private List<Credential> readAll() {
@@ -78,7 +70,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     try {
       List<Credential> credentials =
           objectMapper.readValue(file, new TypeReference<List<Credential>>() {});
-      log.debug("Successfully read {} credentials from the json file", credentials.size());
+      log.trace("Successfully read {} credentials from the json file", credentials.size());
 
       return credentials;
 
