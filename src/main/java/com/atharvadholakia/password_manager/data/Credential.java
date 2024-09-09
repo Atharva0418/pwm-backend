@@ -39,6 +39,20 @@ public class Credential {
   @ValidStringType(fieldName = "Password", message = "Password can only be a string.")
   private String password;
 
+  @Override
+  public String toString() {
+    return "Credential: "
+        + "serviceName='"
+        + serviceName
+        + '\''
+        + ", username='"
+        + username
+        + '\''
+        + ", password='"
+        + password
+        + '\'';
+  }
+
   public Credential() {}
 
   public Credential(String serviceName, String username, String password) {

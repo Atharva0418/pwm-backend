@@ -33,14 +33,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
   public Optional<Credential> findById(String id) {
     log.trace("Entering findById method in repository");
 
-    Optional<Credential> credential =
-        readAll().stream().filter(c -> c.getId().equals(id)).findFirst();
-
-    if (!credential.isPresent()) {
-      log.warn("Credential not found with ID: {}", id);
-    }
-
-    return credential;
+    return readAll().stream().filter(c -> c.getId().equals(id)).findFirst();
   }
 
   @Override

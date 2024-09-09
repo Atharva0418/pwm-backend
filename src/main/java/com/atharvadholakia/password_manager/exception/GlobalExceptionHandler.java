@@ -18,6 +18,8 @@ public class GlobalExceptionHandler {
   public ResponseEntity<HashMap<String, String>> handleValidationExceptions(
       MethodArgumentNotValidException ex) {
 
+    Object invalidObject = ex.getBindingResult().getTarget();
+    log.info("Attempted to create credential with invalid input: {}", invalidObject);
     HashMap<String, StringBuilder> collectAllmessages = new HashMap<>();
     ex.getBindingResult()
         .getAllErrors()
