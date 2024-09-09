@@ -3,15 +3,13 @@ package com.atharvadholakia.password_manager.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
-import com.atharvadholakia.password_manager.repository.CredentialRepository;
+import com.atharvadholakia.password_manager.repository.CredentialRepositoryJPA;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +22,7 @@ import org.mockito.MockitoAnnotations;
 
 public class CredentialServiceTests {
 
-  @Mock private CredentialRepository credentialRepository;
+  @Mock private CredentialRepositoryJPA credentialRepository;
 
   @InjectMocks private CredentialService credentialService;
 
@@ -38,7 +36,7 @@ public class CredentialServiceTests {
 
     Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
 
-    doNothing().when(credentialRepository).save(any(Credential.class));
+    when(credentialRepository.save(credential)).thenReturn(credential);
 
     Credential result =
         credentialService.createCredential("TestServiceName", "TestUsername", "TestPassword");

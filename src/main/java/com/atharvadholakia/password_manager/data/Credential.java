@@ -1,14 +1,17 @@
 package com.atharvadholakia.password_manager.data;
 
 import com.atharvadholakia.password_manager.validation.annotation.ValidStringType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.util.UUID;
 
+@Entity
 public class Credential {
 
-  private String id;
+  @Id private String id;
 
   @NotBlank(message = "Servicename cannot be empty!")
   @Size(min = 3, max = 25, message = "Servicename must be between 3 to 25 characters.")

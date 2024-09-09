@@ -2,7 +2,7 @@ package com.atharvadholakia.password_manager.service;
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
-import com.atharvadholakia.password_manager.repository.CredentialRepository;
+import com.atharvadholakia.password_manager.repository.CredentialRepositoryJPA;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CredentialService {
 
-  private final CredentialRepository credentialRepository;
+  private final CredentialRepositoryJPA credentialRepositoryJPA;
 
-  public CredentialService(CredentialRepository credentialRepository) {
-    this.credentialRepository = credentialRepository;
+  public CredentialService(CredentialRepositoryJPA credentialRepositoryJPA) {
+    this.credentialRepositoryJPA = credentialRepositoryJPA;
   }
 
   public Credential createCredential(String serviceName, String username, String password) {
     Credential credential = new Credential(serviceName, username, password);
 
     log.debug("Calling repository from service");
-    credentialRepository.save(credential);
+    credentialRepositoryJPA.save(credential);
 
     log.trace("Exiting createCredential method in service");
     return credential;
@@ -29,7 +29,7 @@ public class CredentialService {
 
   public Credential getCredentialById(String id) {
     log.debug("Calling repository from service");
-    return credentialRepository
+    return credentialRepositoryJPA
         .findById(id)
         .orElseThrow(
             () -> {
@@ -39,6 +39,6 @@ public class CredentialService {
 
   public List<Credential> getAllCredentials() {
     log.debug("Calling Repository to get all the credentials");
-    return credentialRepository.findAll();
+    return credentialRepositoryJPA.findAll();
   }
 }
