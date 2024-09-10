@@ -28,3 +28,22 @@ It is designed to store and manage unique passwords so that you do not have to r
   ```
   gradle bootRun
   ```
+### How to setup MySql database:
+
+- Install MySql(v8.0.39)(might change in the future) from [MySql official website](https://dev.mysql.com/downloads/mysql/)
+Download according to your OS.
+
+- Create a MySql server with username and password.
+
+- Add the following in your .env file:
+
+  - DB_URL=jdbc:mysql://localhost:<your_portnumber>/<your_database_name>
+  - DB_USERNAME=<your_username>
+  - DB_PASSWORD=<your_password>
+  - DB_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+
+- Bootrun with gradle: Run the application with this command.
+
+  ```
+  gradle bootRun
+  ```
