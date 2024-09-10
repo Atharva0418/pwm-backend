@@ -20,15 +20,15 @@ public class CredentialService {
   public Credential createCredential(String serviceName, String username, String password) {
     Credential credential = new Credential(serviceName, username, password);
 
-    log.debug("Calling repository from service");
+    log.info("Calling repository from service");
     credentialRepository.save(credential);
 
-    log.trace("Exiting createCredential method in service");
+    log.debug("Exiting createCredential from service");
     return credential;
   }
 
   public Credential getCredentialById(String id) {
-    log.debug("Calling repository from service");
+    log.info("Calling repository from service");
     return credentialRepository
         .findById(id)
         .orElseThrow(
@@ -38,7 +38,7 @@ public class CredentialService {
   }
 
   public List<Credential> getAllCredentials() {
-    log.debug("Calling Repository to get all the credentials");
+    log.info("Calling Repository to get all the credentials");
     return credentialRepository.findAll();
   }
 }
