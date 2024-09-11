@@ -1,6 +1,7 @@
 package com.atharvadholakia.password_manager.exception;
 
 import java.util.HashMap;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -10,12 +11,15 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<HashMap<String, String>> handleValidationExceptions(
       MethodArgumentNotValidException ex) {
 
+    Object invalidObject = ex.getBindingResult().getTarget();
+    log.info("Attempted to create credential with invalid input: {}", invalidObject);
     HashMap<String, StringBuilder> collectAllmessages = new HashMap<>();
     ex.getBindingResult()
         .getAllErrors()
@@ -32,6 +36,7 @@ public class GlobalExceptionHandler {
     HashMap<String, String> response = new HashMap<>();
     collectAllmessages.forEach((field, message) -> response.put(field, message.toString().trim()));
 
+    log.warn("Validation error : {}", response);
     return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
   }
 
@@ -40,6 +45,8 @@ public class GlobalExceptionHandler {
       ResourceNotFoundException ex) {
     HashMap<String, String> response = new HashMap<>();
     response.put("error", ex.getMessage());
+
+    log.warn("Resource not found: {}", ex.getMessage());
     return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
   }
 
@@ -48,6 +55,8 @@ public class GlobalExceptionHandler {
       HttpMessageNotReadableException ex) {
     HashMap<String, String> response = new HashMap<>();
     response.put("error", "Inputs can only be strings");
+
+    log.warn("Invalid input: Inputs can only be strings");
     return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
   }
 
@@ -59,6 +68,7 @@ public class GlobalExceptionHandler {
         "We're sorry, but something went wrong on our end. Please try again later. If the"
             + " problem persists, please contact support.");
 
+    log.error("Unexpected error : ", ex);
     return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
   }
 }
