@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
-import com.atharvadholakia.password_manager.repository.CredentialRepositoryJPA;
+import com.atharvadholakia.password_manager.repository.CredentialRepository;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +22,7 @@ import org.mockito.MockitoAnnotations;
 
 public class CredentialServiceTests {
 
-  @Mock private CredentialRepositoryJPA credentialRepository;
+  @Mock private CredentialRepository credentialRepository;
 
   @InjectMocks private CredentialService credentialService;
 
