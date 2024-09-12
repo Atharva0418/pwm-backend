@@ -3,8 +3,6 @@ package com.atharvadholakia.password_manager.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -38,7 +36,7 @@ public class CredentialServiceTests {
 
     Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
 
-    doNothing().when(credentialRepository).save(any(Credential.class));
+    when(credentialRepository.save(credential)).thenReturn(credential);
 
     Credential result =
         credentialService.createCredential("TestServiceName", "TestUsername", "TestPassword");

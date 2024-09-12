@@ -12,6 +12,8 @@
         <logger name="org.springframework" level="OFF"/>
         <logger name="org.apache" level="OFF"/>
         <logger name="org.hibernate.validator" level="OFF"/>
+        <logger name="org.hibernate" level="OFF"/>
+        <logger name="com.zaxxer.hikari" level="OFF" />
 
         <!-- <appender name = "ROLLING_FILE" class = "ch.qos.logback.core.rolling.RollingFileAppender">
             <file>logs/application.log</file>
@@ -29,6 +31,7 @@
             <appender-ref ref="CONSOLE"/>
             <!-- <appender-ref ref="ROLLING_FILE"/> -->
         </root>
+
     </springProfile>
 
     <springProfile name ="prod">
@@ -43,6 +46,9 @@
         <logger name="org.springframework" level="OFF"/>
         <logger name="org.apache" level="OFF"/>
         <logger name="org.hibernate.validator" level="OFF"/>
+        <logger name="org.hibernate" level="OFF"/>
+        <logger name="com.zaxxer.hikari" level="OFF" />
+
 
         <!-- <appender name = "ROLLING_FILE" class = "ch.qos.logback.core.rolling.RollingFileAppender">
             <file>logs/application.log</file>
