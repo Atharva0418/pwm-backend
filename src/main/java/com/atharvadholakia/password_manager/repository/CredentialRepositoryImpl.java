@@ -21,7 +21,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
 
   @Override
   public void save(Credential credential) {
-    log.trace("Entering the save method in repository");
+    log.info("Entering the save method in repository");
     List<Credential> credentials = readAll();
     credentials.removeIf(c -> c.getUsername().equals(credential.getUsername()));
     credentials.add(credential);
@@ -31,7 +31,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
 
   @Override
   public Optional<Credential> findById(String id) {
-    log.trace("Entering findById method in repository");
+    log.info("Entering findById method in repository");
 
     return readAll().stream().filter(c -> c.getId().equals(id)).findFirst();
   }
@@ -46,12 +46,12 @@ public class CredentialRepositoryImpl implements CredentialRepository {
 
   @Override
   public List<Credential> findAll() {
-    log.trace("Entering findAll method in repository");
+    log.info("Entering findAll method in repository");
     return readAll();
   }
 
   private List<Credential> readAll() {
-    log.trace("Entering readAll method in the repository");
+    log.debug("Entering readAll method in the repository");
 
     File file = DATA_FILE.toFile();
 
@@ -63,7 +63,6 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     try {
       List<Credential> credentials =
           objectMapper.readValue(file, new TypeReference<List<Credential>>() {});
-      log.trace("Successfully read {} credentials from the json file", credentials.size());
 
       return credentials;
 
@@ -75,7 +74,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
   }
 
   private void writeAll(List<Credential> credentials) {
-    log.trace("Entering writeAll method in repository");
+    log.debug("Entering writeAll method in repository");
 
     try {
 
