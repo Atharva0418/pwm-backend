@@ -45,11 +45,11 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v4
 
-    - name: Build with Gradle Wrapper
-      run: ./gradlew build
+    - name: Build with Gradle 
+      run: gradle build
 
     - name: Run tests
-      run: ./gradlew test
+      run: gradle test
 
     - name: Publish test results
       if: always()
@@ -57,7 +57,3 @@ jobs:
       with:
         name: test-results
         path: build/test-results/test
-
-    - name: Fail on test failures
-      if: failure()
-      run: exit 1
