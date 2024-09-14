@@ -11,7 +11,7 @@ env:
   MYSQL_DATABASE: password_manager
   MYSQL_USER: user
   MYSQL_PASSWORD: password
-  MYSQL_HOST: localhost  # This is the hostname you'll use in the DB_URL
+  MYSQL_HOST: mysql-master  # This is the hostname you'll use in the DB_URL
 
 on:
   push:
