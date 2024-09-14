@@ -8,11 +8,11 @@
 name: CI Pipeline
 
 env:
-  DB_URL: jdbc:mysql://mysql:3306/password_manager
-  DB_USERNAME: user
-  DB_PASSWORD: password
+  MYSQL_DATABASE: password_manager
+  MYSQL_USER: user
+  MYSQL_PASSWORD: password
+  MYSQL_HOST: mysql-master  # This is the hostname you'll use in the DB_URL
   DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
-
 
 on:
   push:
@@ -23,16 +23,17 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mysql:
+      mysql-master:
         image: mysql:8.0
         ports:
           - 3306/tcp
         env:
-          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-          MYSQL_DATABASE: password_manager
-          MYSQL_USER: ${{ env.DB_USERNAME }}
-          MYSQL_PASSWORD: ${{ env.DB_PASSWORD }}
-        options: --health-cmd "mysqladmin ping --silent" --health-interval 10s
+          MYSQL_ROOT_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+          MYSQL_DATABASE: ${{ env.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ env.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ env.MYSQL_PASSWORD }}
+        options: --health-cmd "mysqladmin ping --silent" --health-interval 10s --health-timeout 5s
+  
 
 
     steps:
