@@ -13,14 +13,20 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
 
-    env:
-      DB_URL: ${{ secrets.DB_URL }}
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      DB_DRIVER_CLASS_NAME: ${{ secrets.DB_DRIVER_CLASS_NAME }}
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3360:3360
+        env:
+          MYSQL_ROOT_PASSWORD : rootpassword
+          MYSQL_DATABASE : password_manager
+          MYSQL_USER : user
+          MYSQL_PASSWORD : password
+        options: --health-cmd "mysqladmin ping --silent" --health-interval 10s
+
 
     steps:
     - uses: actions/checkout@v4
