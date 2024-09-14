@@ -19,12 +19,12 @@ jobs:
       mysql:
         image: mysql:8.0
         ports:
-          - 3360:3360
+          - 3306:3306
         env:
-          MYSQL_ROOT_PASSWORD : rootpassword
-          MYSQL_DATABASE : password_manager
-          MYSQL_USER : user
-          MYSQL_PASSWORD : password
+          MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_DATABASE: password_manager
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
         options: --health-cmd "mysqladmin ping --silent" --health-interval 10s
 
 
