@@ -11,7 +11,7 @@ env:
   MYSQL_DATABASE: password_manager
   MYSQL_USER: user
   MYSQL_PASSWORD: password
-  MYSQL_HOST: mysql-master  # This is the hostname you'll use in the DB_URL
+  MYSQL_HOST: localhost  # This is the hostname you'll use in the DB_URL
   DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
 
 on:
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mysql-master:
+      localhost:
         image: mysql:8.0
         ports:
           - 3306/tcp
