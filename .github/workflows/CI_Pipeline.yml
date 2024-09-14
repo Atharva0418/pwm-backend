@@ -12,7 +12,6 @@ env:
   MYSQL_USER: user
   MYSQL_PASSWORD: password
   MYSQL_HOST: localhost  # This is the hostname you'll use in the DB_URL
-  DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
 
 on:
   push:
