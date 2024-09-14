@@ -11,9 +11,6 @@ on:
   push:
     branches:
       - '**'
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -29,21 +26,5 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
-      with:
-        gradle-version: '8.9'
-        cache-disabled: true
-
     - name: Build with Gradle 
       run: gradle build
-
-    - name: Run tests
-      run: gradle test
-
-    - name: Publish test results
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-results
-        path: build/test-results/test
