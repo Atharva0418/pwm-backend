@@ -16,6 +16,12 @@ jobs:
 
     runs-on: windows-latest
 
+    env:
+      DB_URL: ${{ secrets.DB_URL }}
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_DRIVER_CLASS_NAME: ${{ secrets.DB_DRIVER_CLASS_NAME }}
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
