@@ -8,7 +8,7 @@
 name: CI Pipeline
 
 env:
-  DB_URL: jdbc:mysql://mysql-master:3306/password_manager
+  DB_URL: jdbc:mysql://localhost:3306/password_manager
   DB_USERNAME: user
   DB_PASSWORD: password
   DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mysql-master:
+      localhost:
         image: mysql:8.0
         ports:
           - 3306/tcp
