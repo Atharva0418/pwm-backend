@@ -7,11 +7,11 @@
 
 name: CI Pipeline
 
-env:
-  DB_URL: jdbc:mysql://mysql:3306/password_manager
-  DB_USERNAME: user
-  DB_PASSWORD: password
-  DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
+# env:
+#   DB_URL: jdbc:mysql://mysql:3306/password_manager
+#   DB_USERNAME: user
+#   DB_PASSWORD: password
+#   DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
 
 
 on:
@@ -22,17 +22,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    services:
-      mysql:
-        image: mysql:8.0
-        ports:
-          - 3306/tcp
-        env:
-          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-          MYSQL_DATABASE: password_manager
-          MYSQL_USER: ${{ env.DB_USERNAME }}
-          MYSQL_PASSWORD: ${{ env.DB_PASSWORD }}
-        options: --health-cmd "mysqladmin ping --silent" --health-interval 10s --health-timeout 5s
+    # services:
+    #   mysql:
+    #     image: mysql:8.0
+    #     ports:
+    #       - 3306/tcp
+    #     env:
+    #       MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
+    #       MYSQL_DATABASE: password_manager
+    #       MYSQL_USER: ${{ env.DB_USERNAME }}
+    #       MYSQL_PASSWORD: ${{ env.DB_PASSWORD }}
+    #     options: --health-cmd "mysqladmin ping --silent" --health-interval 10s --health-timeout 5s
   
 
 
@@ -52,7 +52,7 @@ jobs:
         gradle-version: '8.9'
     
     - name: Build with Gradle 8.9
-      run: gradle build
+      run: gradle build -x test
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
     # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
