@@ -18,22 +18,22 @@ repositories {
 }
 
 dependencies {
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
-	implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.2'
-	implementation 'jakarta.validation:jakarta.validation-api:3.1.0'
-	implementation 'org.apache.commons:commons-lang3:3.12.0'
-	implementation 'org.springframework.boot:spring-boot-starter-logging'
-	implementation 'net.logstash.logback:logstash-logback-encoder:8.0'
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtimeOnly("com.mysql:mysql-connector-j")
-	compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
-	testImplementation 'org.hamcrest:hamcrest:2.2'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'  // For development only
+    implementation 'org.springframework.boot:spring-boot-starter-web'  // Core web functionality
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.2'  // Validation API
+    implementation 'jakarta.validation:jakarta.validation-api:3.1.0'  // Jakarta Validation API
+    implementation 'org.apache.commons:commons-lang3:3.12.0'  // Commons Lang
+    implementation 'org.springframework.boot:spring-boot-starter-logging'  // Logging starter
+    implementation 'net.logstash.logback:logstash-logback-encoder:8.0'  // Logstash encoder for Logback
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA and Hibernate
+    runtimeOnly 'com.mysql:mysql-connector-j'  // MySQL connector
+    compileOnly 'org.projectlombok:lombok:1.18.30'  // Lombok for code generation
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'  // Lombok annotation processing
+    testImplementation 'org.hamcrest:hamcrest:2.2'  // Hamcrest for assertions
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'  // Testing support
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'  // JUnit launcher
 }
+
 
 tasks.named('test') {
 	useJUnitPlatform()
