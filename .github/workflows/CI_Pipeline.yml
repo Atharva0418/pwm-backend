@@ -30,5 +30,14 @@ jobs:
 
     - name: Run Gradle Build
       run: gradle build
+    
+    - name: Test Report
+      uses: phoenix-actions/test-reporting@v8
+      id: test-report               # Set ID reference for step
+      if: success() || failure()    # run this step even if previous step failed
+      with:
+           name: JEST Tests            # Name of the check run which will be created
+          path: reports/jest-*.xml    # Path to test results
+          reporter: jest-junit        # Format of test results
 
 
