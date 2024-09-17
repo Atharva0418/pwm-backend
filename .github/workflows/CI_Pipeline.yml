@@ -1,11 +1,5 @@
 name: CI Pipeline
 
-env:
-  DB_URL: jdbc:mysql://127.0.0.1:3306/password_manager
-  DB_USERNAME: user
-  DB_PASSWORD: password
-  DB_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver
-
 on:
   push:
     branches: '**'
@@ -17,13 +11,11 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
-        ports:
-          - 3306/tcp
         env:
-          MYSQL_ROOT_PASSWORD: ${{ env.DB_PASSWORD }}
-          MYSQL_DATABASE: password_manager
-          MYSQL_USER: ${{ env.DB_USERNAME }}
-          MYSQL_PASSWORD: ${{ env.DB_PASSWORD }}
+          MYSQL_DATABASE: testdb
+          MYSQL_ROOT_PASSWORD: testrootpass
+        ports:
+          - 3306/3306
         options: --health-cmd "mysqladmin ping --silent" --health-interval 10s --health-timeout 5s
 
     steps:
@@ -39,13 +31,13 @@ jobs:
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
       with:
         gradle-version: '8.9'
-    
-    - name: Wait for MySQL to start
-      run: |
-        sleep 15
-        mysql -h 127.0.0.1 -u ${{ env.DB_USERNAME }} -p${{ env.DB_PASSWORD }} -e "SHOW DATABASES;"
 
     - name: Build with Gradle 8.9
-      run: gradle build 
+      run: gradle build
+      env:
+        DATABASE_NAME: testdb
+        DATABASE_USERNAME: root          
+        DATABASE_PASSWORD: testrootpass          
+        DATABASE_ENDPOINT: 127.0.0.1
 
 
