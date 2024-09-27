@@ -1,18 +1,12 @@
 name: CI Pipeline
 
-env:
-  # Define any environment variables needed for your tests
-  DB_URL: jdbc:mysql://127.0.0.1:3306/password_manager
-  DB_USERNAME: root
-  DB_PASSWORD: testrootpass
-
 on:
   push:
     branches: '**'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -30,14 +24,3 @@ jobs:
 
     - name: Run Gradle Build
       run: gradle build
-    
-    - name: Test Report
-      uses: phoenix-actions/test-reporting@v8
-      id: test-report               # Set ID reference for step
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-           name: JEST Tests            # Name of the check run which will be created
-          path: reports/jest-*.xml    # Path to test results
-          reporter: jest-junit        # Format of test results
-
-
