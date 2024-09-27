@@ -19,16 +19,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
-@SpringBootTest
 public class CredentialServiceTests {
 
-  @MockBean private CredentialRepository credentialRepository;
+  @Mock private CredentialRepository credentialRepository;
 
-  @Autowired private CredentialService credentialService;
+  @InjectMocks private CredentialService credentialService;
 
   @BeforeEach
   public void setup() {
