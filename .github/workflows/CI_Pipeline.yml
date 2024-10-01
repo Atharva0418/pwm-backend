@@ -24,14 +24,6 @@ jobs:
       with:
         gradle-version: '8.9'
 
-    - name: Cache Gradle packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.gradle/8.9/
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle')}}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-
     - name: Run Gradle Build
       run: gradle build
 
