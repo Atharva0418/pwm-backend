@@ -43,3 +43,7 @@ bootRun {
 	sourceResources sourceSets.main
 
 }
+
+bootBuildImage{
+	imageName = 'atharva0418/springboot-gradle-app'
+}

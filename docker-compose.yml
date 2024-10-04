@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  app:
+    image: atharva0418/springboot-gradle-app
+    container_name: springboot-app
+    ports:
+      - 3000:3000
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/test
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    container_name: mysqldb
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
