@@ -34,6 +34,29 @@ public class CredentialController {
     return new ResponseEntity<>(createdCredential, HttpStatus.CREATED);
   }
 
+  @PatchMapping("/{id}")
+  public ResponseEntity<Credential> updateCredential(
+      @PathVariable String id, @Valid @RequestBody Credential credential) {
+    Credential oldCredential = credentialService.getCredentialById(id);
+    log.info(
+        "Updating a credential with ID: {}, Servicename: {}, Username: {}, Password: {}",
+        id,
+        oldCredential.getServiceName(),
+        oldCredential.getUsername(),
+        oldCredential.getPassword());
+    Credential updatedCredential =
+        credentialService.updateCredential(
+            id, credential.getServiceName(), credential.getUsername(), credential.getPassword());
+    log.info(
+        "Successfully updated Credential with ID: {} to Servicename: {}, Username: {}, Password: {}"
+            + " ",
+        id,
+        updatedCredential.getServiceName(),
+        updatedCredential.getUsername(),
+        updatedCredential.getPassword());
+    return new ResponseEntity<>(updatedCredential, HttpStatus.OK);
+  }
+
   @GetMapping("/{id}")
   public ResponseEntity<Credential> getCredentialById(@PathVariable String id) {
     log.info("Fetching credential with ID: {}", id);
@@ -50,5 +73,16 @@ public class CredentialController {
     List<Credential> credentials = credentialService.getAllCredentials();
     log.info("Successfully fetched {} credentials", credentials.size());
     return new ResponseEntity<>(credentials, HttpStatus.OK);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteCredentialById(@PathVariable String id) {
+    log.info("Deleting a credential with ID: {}", id);
+    credentialService.getCredentialById(id);
+    credentialService.deleteCredentialById(id);
+
+    log.info("Successfully deleted credential with ID: {}", id);
+
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }

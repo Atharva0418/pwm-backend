@@ -20,15 +20,34 @@ public class CredentialService {
   public Credential createCredential(String serviceName, String username, String password) {
     Credential credential = new Credential(serviceName, username, password);
 
-    log.info("Calling repository from service");
+    log.info("Calling repository from service to write to DB.");
     credentialRepository.save(credential);
 
     log.debug("Exiting createCredential from service");
     return credential;
   }
 
+  public Credential updateCredential(
+      String id, String serviceName, String username, String password) {
+    Credential credential = getCredentialById(id);
+
+    if (credential.getUsername() != null) {
+      credential.setUsername(username);
+    }
+    if (credential.getServiceName() != null) {
+      credential.setServicename(serviceName);
+    }
+    if (credential.getPassword() != null) {
+      credential.setPassword(password);
+    }
+
+    log.debug("Exiting updateCredential from service");
+    credentialRepository.save(credential);
+    return credential;
+  }
+
   public Credential getCredentialById(String id) {
-    log.info("Calling repository from service");
+    log.info("Calling repository from service to get a credential with ID: {}", id);
     return credentialRepository
         .findById(id)
         .orElseThrow(
@@ -38,7 +57,12 @@ public class CredentialService {
   }
 
   public List<Credential> getAllCredentials() {
-    log.info("Calling Repository to get all the credentials");
+    log.info("Calling repository to get all the credentials");
     return credentialRepository.findAll();
+  }
+
+  public void deleteCredentialById(String id) {
+    log.info("Calling repository to delete a credential with ID: {}", id);
+    credentialRepository.deleteById(id);
   }
 }
