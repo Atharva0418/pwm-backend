@@ -99,4 +99,43 @@ public class CredentialServiceTests {
 
     verify(credentialRepository).findAll();
   }
+
+  @Test
+  public void testUpdateCredential() throws Exception {
+    String credentialID = "1234";
+    Credential oldCredential =
+        new Credential("TestServicename1", "TestUsername1", "TestPassword@1");
+    oldCredential.setId(credentialID);
+
+    when(credentialRepository.findById(credentialID)).thenReturn(Optional.of(oldCredential));
+
+    oldCredential =
+        credentialService.updateCredential(
+            credentialID, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
+
+    assertEquals(oldCredential.getServiceName(), "UpdatedServiceName");
+    assertEquals(oldCredential.getUsername(), "UpdatedUsername");
+    assertEquals(oldCredential.getPassword(), "UpdatedPassword@1");
+
+    verify(credentialRepository).findById(credentialID);
+    verify(credentialRepository).save(oldCredential);
+  }
+
+  @Test
+  public void testUpdateCredential_NotFound() throws Exception {
+    String nonexistentID = "1234";
+    when(credentialRepository.findById(nonexistentID)).thenReturn(Optional.empty());
+
+    assertThrows(
+        ResourceNotFoundException.class, () -> credentialService.getCredentialById(nonexistentID));
+
+    verify(credentialRepository, times(1)).findById(nonexistentID);
+  }
+
+  @Test
+  public void testDeleteCredentialByID() throws Exception {
+    credentialRepository.deleteById("ID");
+
+    verify(credentialRepository).deleteById("ID");
+  }
 }

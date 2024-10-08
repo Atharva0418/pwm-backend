@@ -29,15 +29,19 @@ public class CredentialService {
 
   public Credential updateCredential(
       String id, String serviceName, String username, String password) {
-    Credential credential = getCredentialById(id);
+    Credential credential =
+        credentialRepository
+            .findById(id)
+            .orElseThrow(
+                () -> new ResourceNotFoundException("Credential not found with ID: " + id));
 
-    if (credential.getUsername() != null) {
+    if (!credential.getUsername().equals(username)) {
       credential.setUsername(username);
     }
-    if (credential.getServiceName() != null) {
+    if (!credential.getServiceName().equals(serviceName)) {
       credential.setServicename(serviceName);
     }
-    if (credential.getPassword() != null) {
+    if (!credential.getPassword().equals(password)) {
       credential.setPassword(password);
     }
 
