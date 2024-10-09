@@ -257,17 +257,17 @@ public class CredentialControllerTests {
   @Test
   public void testUpdateCredential() throws Exception {
     String credentialID = "1234";
-    Credential oldCredential =
+    Credential existingCredential =
         new Credential("TestServicename1", "TestUsername1", "TestPassword@1");
-    oldCredential.setId(credentialID);
+    existingCredential.setId(credentialID);
 
     Credential updatedCredential =
         new Credential("UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
     updatedCredential.setId(credentialID);
 
-    when(credentialService.getCredentialById(credentialID)).thenReturn(oldCredential);
+    when(credentialService.getCredentialById(credentialID)).thenReturn(existingCredential);
     when(credentialService.updateCredential(
-            credentialID, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1"))
+            existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1"))
         .thenReturn(updatedCredential);
 
     mockMvc
@@ -285,7 +285,7 @@ public class CredentialControllerTests {
     verify(credentialService).getCredentialById(credentialID);
     verify(credentialService)
         .updateCredential(
-            credentialID, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
+            existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
   }
 
   @Test

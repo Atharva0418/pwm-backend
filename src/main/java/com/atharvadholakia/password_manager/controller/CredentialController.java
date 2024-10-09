@@ -37,16 +37,19 @@ public class CredentialController {
   @PatchMapping("/{id}")
   public ResponseEntity<Credential> updateCredential(
       @PathVariable String id, @Valid @RequestBody Credential credential) {
-    Credential oldCredential = credentialService.getCredentialById(id);
+    Credential existingCredential = credentialService.getCredentialById(id);
     log.info(
         "Updating a credential with ID: {}, Servicename: {}, Username: {}, Password: {}",
         id,
-        oldCredential.getServiceName(),
-        oldCredential.getUsername(),
-        oldCredential.getPassword());
+        existingCredential.getServiceName(),
+        existingCredential.getUsername(),
+        existingCredential.getPassword());
     Credential updatedCredential =
         credentialService.updateCredential(
-            id, credential.getServiceName(), credential.getUsername(), credential.getPassword());
+            existingCredential,
+            credential.getServiceName(),
+            credential.getUsername(),
+            credential.getPassword());
     log.info(
         "Successfully updated Credential with ID: {} to Servicename: {}, Username: {}, Password: {}"
             + " ",

@@ -28,26 +28,21 @@ public class CredentialService {
   }
 
   public Credential updateCredential(
-      String id, String serviceName, String username, String password) {
-    Credential credential =
-        credentialRepository
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Credential not found with ID: " + id));
+      Credential existingCredential, String serviceName, String username, String password) {
 
-    if (!credential.getUsername().equals(username)) {
-      credential.setUsername(username);
+    if (!existingCredential.getUsername().equals(username)) {
+      existingCredential.setUsername(username);
     }
-    if (!credential.getServiceName().equals(serviceName)) {
-      credential.setServicename(serviceName);
+    if (!existingCredential.getServiceName().equals(serviceName)) {
+      existingCredential.setServicename(serviceName);
     }
-    if (!credential.getPassword().equals(password)) {
-      credential.setPassword(password);
+    if (!existingCredential.getPassword().equals(password)) {
+      existingCredential.setPassword(password);
     }
 
     log.debug("Exiting updateCredential from service");
-    credentialRepository.save(credential);
-    return credential;
+    credentialRepository.save(existingCredential);
+    return existingCredential;
   }
 
   public Credential getCredentialById(String id) {

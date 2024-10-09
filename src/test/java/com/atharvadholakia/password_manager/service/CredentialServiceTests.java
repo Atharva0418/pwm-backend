@@ -103,22 +103,19 @@ public class CredentialServiceTests {
   @Test
   public void testUpdateCredential() throws Exception {
     String credentialID = "1234";
-    Credential oldCredential =
+    Credential existingCredential =
         new Credential("TestServicename1", "TestUsername1", "TestPassword@1");
-    oldCredential.setId(credentialID);
+    existingCredential.setId(credentialID);
 
-    when(credentialRepository.findById(credentialID)).thenReturn(Optional.of(oldCredential));
-
-    oldCredential =
+    existingCredential =
         credentialService.updateCredential(
-            credentialID, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
+            existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
 
-    assertEquals(oldCredential.getServiceName(), "UpdatedServiceName");
-    assertEquals(oldCredential.getUsername(), "UpdatedUsername");
-    assertEquals(oldCredential.getPassword(), "UpdatedPassword@1");
+    assertEquals(existingCredential.getServiceName(), "UpdatedServiceName");
+    assertEquals(existingCredential.getUsername(), "UpdatedUsername");
+    assertEquals(existingCredential.getPassword(), "UpdatedPassword@1");
 
-    verify(credentialRepository).findById(credentialID);
-    verify(credentialRepository).save(oldCredential);
+    verify(credentialRepository).save(existingCredential);
   }
 
   @Test
