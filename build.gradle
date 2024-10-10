@@ -43,3 +43,7 @@ bootRun {
 	sourceResources sourceSets.main
 
 }
+
+bootBuildImage{
+	imageName = 'pwm-backend-img'
+}
