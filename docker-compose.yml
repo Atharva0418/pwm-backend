@@ -1,7 +1,7 @@
 services:
   app:
-    image: atharva0418/springboot-gradle-app
-    container_name: springboot-app
+    image: pwm-backend-img
+    container_name: pwm-backend-app
     ports:
       - 3000:3000
     environment:

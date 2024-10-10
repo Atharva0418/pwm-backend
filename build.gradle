@@ -45,5 +45,5 @@ bootRun {
 }
 
 bootBuildImage{
-	imageName = 'atharva0418/springboot-gradle-app'
+	imageName = 'pwm-backend-img'
 }
