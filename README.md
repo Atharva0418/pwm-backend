@@ -47,3 +47,19 @@ Download according to your OS.
   ```
   gradle bootRun
   ```
+
+  ### How to run the docker compose file
+
+  - Install Docker from [Docker official website](https://www.docker.com/). Check your OS and download accordingly.
+
+  - Build the Docker Image with this command. Make sure docker engine is running before running this command. (Simply open docker desktop to boot the docker engine)
+
+  ```
+  gradle bootBuildImage
+  ```
+
+  - Once the Docker Image is built, use the following command to run the services defined in the `docker-compose.yml` file. (Docker engine must be running.)
+
+  ```
+  docker compose up
+  ```
