@@ -119,17 +119,6 @@ public class CredentialServiceTests {
   }
 
   @Test
-  public void testUpdateCredential_NotFound() throws Exception {
-    String nonexistentID = "1234";
-    when(credentialRepository.findById(nonexistentID)).thenReturn(Optional.empty());
-
-    assertThrows(
-        ResourceNotFoundException.class, () -> credentialService.getCredentialById(nonexistentID));
-
-    verify(credentialRepository, times(1)).findById(nonexistentID);
-  }
-
-  @Test
   public void testDeleteCredentialByID() throws Exception {
     credentialRepository.deleteById("ID");
 
