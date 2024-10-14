@@ -99,4 +99,29 @@ public class CredentialServiceTests {
 
     verify(credentialRepository).findAll();
   }
+
+  @Test
+  public void testUpdateCredential() throws Exception {
+    String credentialID = "1234";
+    Credential existingCredential =
+        new Credential("TestServicename1", "TestUsername1", "TestPassword@1");
+    existingCredential.setId(credentialID);
+
+    existingCredential =
+        credentialService.updateCredential(
+            existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
+
+    assertEquals(existingCredential.getServiceName(), "UpdatedServiceName");
+    assertEquals(existingCredential.getUsername(), "UpdatedUsername");
+    assertEquals(existingCredential.getPassword(), "UpdatedPassword@1");
+
+    verify(credentialRepository).save(existingCredential);
+  }
+
+  @Test
+  public void testDeleteCredentialByID() throws Exception {
+    credentialRepository.deleteById("ID");
+
+    verify(credentialRepository).deleteById("ID");
+  }
 }
