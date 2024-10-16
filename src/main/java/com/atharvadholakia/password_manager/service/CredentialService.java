@@ -64,6 +64,9 @@ public class CredentialService {
 
   public List<Credential> getAllCredentials() {
     log.info("Calling repository to get all the credentials");
+    List<Credential> credentials = credentialRepository.findAll();
+    credentials.forEach(
+        credential -> credential.setPassword(encryptionService.decrypt(credential.getPassword())));
     return credentialRepository.findAll();
   }
 
