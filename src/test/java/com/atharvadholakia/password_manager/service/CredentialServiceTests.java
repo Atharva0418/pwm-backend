@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import com.atharvadholakia.password_manager.data.Credential;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
 import com.atharvadholakia.password_manager.repository.CredentialRepository;
+import com.atharvadholakia.password_manager.utils.EncryptionService;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,8 @@ public class CredentialServiceTests {
 
   @Mock private CredentialRepository credentialRepository;
 
+  @Mock private EncryptionService encryptionService;
+
   @InjectMocks private CredentialService credentialService;
 
   @BeforeEach
@@ -34,12 +37,14 @@ public class CredentialServiceTests {
   @Test
   public void testCreateCredential() throws Exception {
 
-    Credential credential = new Credential("TestServiceName", "TestUsername", "TestPassword");
+    Credential credential = new Credential("TestServiceName", "TestUsername", "TestP@ssword1");
+    credential.setPassword(encryptionService.encrypt(credential.getPassword()));
 
     when(credentialRepository.save(credential)).thenReturn(credential);
 
     Credential result =
-        credentialService.createCredential("TestServiceName", "TestUsername", "TestPassword");
+        credentialService.createCredential(
+            "TestServiceName", "TestUsername", encryptionService.encrypt(credential.getPassword()));
 
     assertEquals(credential.getServiceName(), result.getServiceName());
     assertEquals(credential.getUsername(), result.getUsername());
@@ -110,10 +115,11 @@ public class CredentialServiceTests {
     existingCredential =
         credentialService.updateCredential(
             existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
+    existingCredential.setPassword(encryptionService.encrypt("UpdatedPassword@1"));
 
     assertEquals(existingCredential.getServiceName(), "UpdatedServiceName");
     assertEquals(existingCredential.getUsername(), "UpdatedUsername");
-    assertEquals(existingCredential.getPassword(), "UpdatedPassword@1");
+    assertEquals(existingCredential.getPassword(), encryptionService.encrypt("UpdatedPassword@1"));
 
     verify(credentialRepository).save(existingCredential);
   }
