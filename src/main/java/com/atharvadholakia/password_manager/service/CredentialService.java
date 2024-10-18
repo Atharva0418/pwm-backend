@@ -67,7 +67,7 @@ public class CredentialService {
     List<Credential> credentials = credentialRepository.findAll();
     credentials.forEach(
         credential -> credential.setPassword(encryptionService.decrypt(credential.getPassword())));
-    return credentialRepository.findAll();
+    return credentials;
   }
 
   public void deleteCredentialById(String id) {
