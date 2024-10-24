@@ -60,6 +60,14 @@ public class GlobalExceptionHandler {
     return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
   }
 
+  @ExceptionHandler(EmailAlreadyExistsException.class)
+  public ResponseEntity<HashMap<String, String>> handleEmailAlreadyExistsException(
+      EmailAlreadyExistsException ex) {
+    HashMap<String, String> response = new HashMap<>();
+    response.put("email", ex.getMessage());
+    return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+  }
+
   @ExceptionHandler(Exception.class)
   public ResponseEntity<HashMap<String, String>> handleGenericException(Exception ex) {
     HashMap<String, String> response = new HashMap<>();
