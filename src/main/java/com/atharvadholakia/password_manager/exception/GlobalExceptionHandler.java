@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
       MethodArgumentNotValidException ex) {
 
     Object invalidObject = ex.getBindingResult().getTarget();
-    log.info("Attempted to create credential with invalid input: {}", invalidObject);
+    log.info("Invalid input: {}", invalidObject);
     HashMap<String, StringBuilder> collectAllmessages = new HashMap<>();
     ex.getBindingResult()
         .getAllErrors()
@@ -65,6 +65,7 @@ public class GlobalExceptionHandler {
       EmailAlreadyExistsException ex) {
     HashMap<String, String> response = new HashMap<>();
     response.put("email", ex.getMessage());
+    log.error(ex.getMessage());
     return new ResponseEntity<>(response, HttpStatus.CONFLICT);
   }
 

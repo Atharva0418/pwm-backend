@@ -17,7 +17,7 @@ public class MaskingPatternLayout extends PatternLayout {
 
   private String maskSensitiveData(String message) {
 
-    String regex = "(?i)(password\\s*[:=]\\s*)(\\S+)";
+    String regex = "(?i)(password\\s*[:=]\\s*)(?!\\$2[aby]|\\{SHA\\}|[a-fA-F0-9]{64})(\\S+)";
 
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(message);

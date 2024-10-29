@@ -31,6 +31,20 @@ public class User {
   @Column(nullable = false, unique = true)
   private String salt;
 
+  @Override
+  public String toString() {
+    return "User: "
+        + "email='"
+        + email
+        + '\''
+        + ", hashed password='"
+        + hashedPassword
+        + '\''
+        + ", salt='"
+        + salt
+        + '\'';
+  }
+
   public User() {}
 
   public User(String email, String hashedPassword, String salt) {
