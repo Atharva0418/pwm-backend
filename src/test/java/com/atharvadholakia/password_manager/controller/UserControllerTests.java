@@ -4,11 +4,15 @@ import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.atharvadholakia.password_manager.data.User;
+import com.atharvadholakia.password_manager.exception.EmailAlreadyExistsException;
+import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
 import com.atharvadholakia.password_manager.service.UserService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
@@ -125,5 +129,68 @@ public class UserControllerTests {
                 .value(containsString("Hashed password must be between 60 and 255 characters.")))
         .andExpect(
             jsonPath("$.salt").value(containsString("Salt must be between 16 and 64 characters.")));
+  }
+
+  @Test
+  public void testRegisterUser_EmailAlreadyExists() throws Exception {
+    User user2 =
+        new User(
+            "testemail@gmail.com",
+            "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd895fcec1c812c24d8",
+            "E9xRVzI4T3Q1Yk1XUnlLWQ==");
+
+    when(userService.registerUser(any(User.class)))
+        .thenThrow(new EmailAlreadyExistsException("Email already exists."));
+
+    mockmvc
+        .perform(
+            post("/api/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    createJsonInput(user2.getEmail(), user2.getHashedPassword(), user2.getSalt())))
+        .andExpect(status().isConflict())
+        .andExpect(jsonPath("$.email").value("Email already exists."));
+
+    verify(userService).registerUser(any(User.class));
+  }
+
+  @Test
+  public void testGetSaltByEmail() throws Exception {
+    User user =
+        new User(
+            "testemail@gmail.com",
+            "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd895fcec1c812c24d8",
+            "E9xRVzI4T3Q1Yk1XUnlLWQ==");
+
+    when(userService.getSaltByEmail(user.getEmail())).thenReturn(user.getSalt());
+
+    mockmvc
+        .perform(get("/api/salt").param("email", "testemail@gmail.com"))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("$.Salt").value("E9xRVzI4T3Q1Yk1XUnlLWQ=="));
+
+    verify(userService).getSaltByEmail(user.getEmail());
+  }
+
+  @Test
+  public void testGetSaltByEmail_InvalidReqestParam() throws Exception {
+    mockmvc
+        .perform(get("/api/salt").param("notemail", "abcde1234"))
+        .andExpect(status().isBadRequest())
+        .andExpect(jsonPath("$.error").value("email parameter is missing."));
+  }
+
+  @Test
+  public void testGetSaltByEmail_NotFound() throws Exception {
+    String email = "notfound@gmail.com";
+    when(userService.getSaltByEmail(email))
+        .thenThrow(new ResourceNotFoundException("User not found with Email: " + email));
+
+    mockmvc
+        .perform(get("/api/salt").param("email", email))
+        .andExpect(status().isNotFound())
+        .andExpect(jsonPath("$.error").value("User not found with Email: " + email));
+
+    verify(userService).getSaltByEmail(email);
   }
 }
