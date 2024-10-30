@@ -3,6 +3,7 @@ package com.atharvadholakia.password_manager.controller;
 import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.service.UserService;
 import jakarta.validation.Valid;
+import java.util.HashMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<User> registerUser(@Valid @RequestBody User user) {
+  public ResponseEntity<HashMap<String, String>> registerUser(@Valid @RequestBody User user) {
     log.info(
         "Registering a user with Email: {} ,Hashed password: {}, Salt: {}",
         user.getEmail(),
@@ -31,11 +32,16 @@ public class UserController {
         user.getSalt());
     User registeredUser = userService.registerUser(user);
 
+    HashMap<String, String> response = new HashMap<>();
+    response.put("ID", registeredUser.getID());
+    response.put("Email", registeredUser.getEmail());
+
     log.info(
-        "Successfully registered a user with Email: {}, Hashed password: {}, Salt: {}",
+        "Successfully registered a user with ID: {}, Email: {}, Hashed password: {}, Salt: {}",
+        registeredUser.getID(),
         registeredUser.getEmail(),
         registeredUser.getHashedPassword(),
         registeredUser.getSalt());
-    return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
+    return new ResponseEntity<>(response, HttpStatus.CREATED);
   }
 }

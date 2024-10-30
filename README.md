@@ -28,6 +28,28 @@ It is designed to store and manage unique passwords so that you do not have to r
   ```
   gradle bootRun
   ```
+
+### How to run tests:
+
+- To run all the tests, simply run the below command.
+
+```
+gradle test
+```
+
+- To run a specific test file e.g only run tests in CredentialControllerTests file, run the following command.
+Replace CredentialControllerTests with the name of the test file you want to run.
+
+```
+gradle test --tests "CredentialControllerTests"
+```
+
+- To run a specific method in a test file e.g only test "testCreateCredential in CredentialControllerTests file, run the following command. Replace CredentialControllerTests.testCreateCredential with the name of the test file and the method.
+
+```
+gradle test --tests "CredentialControllerTests.testCreateCredential"
+```
+
 ### How to setup MySql database:
 
 - Install MySql(v8.0.39)(might change in the future) from [MySql official website](https://dev.mysql.com/downloads/mysql/)
