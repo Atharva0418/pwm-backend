@@ -16,8 +16,7 @@ public class MaskingPatternLayout extends PatternLayout {
   }
 
   private String maskSensitiveData(String message) {
-
-    String regex = "(?i)(password\\s*[:=]\\s*)(\\S+)";
+    String regex = "(?i)(password\\s*[:=]\\s*)(\\S+)|(salt\\s*[:=]\\s*)(\\S+)";
 
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(message);
@@ -25,10 +24,19 @@ public class MaskingPatternLayout extends PatternLayout {
     StringBuilder masked = new StringBuilder();
 
     while (matcher.find()) {
-      String beforePassword = matcher.group(1);
-      String passwordValue = matcher.group(2);
-      String maskedPassword = "*".repeat(passwordValue.length() - 1);
-      matcher.appendReplacement(masked, beforePassword + maskedPassword);
+      if (matcher.group(1) != null) {
+        String beforePassword = matcher.group(1);
+        String passwordValue = matcher.group(2);
+        String maskedPassword = "*".repeat(passwordValue.length() - 1);
+        matcher.appendReplacement(masked, beforePassword + maskedPassword);
+      }
+      // Mask salt
+      else if (matcher.group(3) != null) {
+        String beforeSalt = matcher.group(3);
+        String saltValue = matcher.group(4);
+        String maskedSalt = "*".repeat(saltValue.length() - 1);
+        matcher.appendReplacement(masked, beforeSalt + maskedSalt);
+      }
     }
     matcher.appendTail(masked);
 
