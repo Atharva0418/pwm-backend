@@ -25,7 +25,7 @@ public class UserController {
     this.userService = userService;
   }
 
-  @PostMapping
+  @PostMapping("/register")
   public ResponseEntity<HashMap<String, String>> registerUser(@Valid @RequestBody User user) {
     log.info(
         "Registering a user with Email: {} ,Hashed password: {}, Salt: {}",
