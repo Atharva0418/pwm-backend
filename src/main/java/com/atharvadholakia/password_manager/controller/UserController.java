@@ -7,13 +7,15 @@ import java.util.HashMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/register")
+@RequestMapping("/api")
 @Slf4j
 public class UserController {
 
@@ -23,7 +25,7 @@ public class UserController {
     this.userService = userService;
   }
 
-  @PostMapping
+  @PostMapping("/register")
   public ResponseEntity<HashMap<String, String>> registerUser(@Valid @RequestBody User user) {
     log.info(
         "Registering a user with Email: {} ,Hashed password: {}, Salt: {}",
@@ -43,5 +45,18 @@ public class UserController {
         registeredUser.getHashedPassword(),
         registeredUser.getSalt());
     return new ResponseEntity<>(response, HttpStatus.CREATED);
+  }
+
+  @GetMapping("/salt")
+  public ResponseEntity<HashMap<String, String>> getSaltByEmail(@RequestParam String email) {
+    log.info("Fetching salt by Email: {}", email);
+    String salt = userService.getSaltByEmail(email);
+
+    HashMap<String, String> response = new HashMap<>();
+
+    response.put("Salt", salt);
+
+    log.info("Successfully fetched salt by Email: {}", email);
+    return new ResponseEntity<>(response, HttpStatus.OK);
   }
 }

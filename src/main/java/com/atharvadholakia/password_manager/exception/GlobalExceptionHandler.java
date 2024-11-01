@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -67,6 +68,15 @@ public class GlobalExceptionHandler {
     response.put("email", ex.getMessage());
     log.error(ex.getMessage());
     return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+  }
+
+  @ExceptionHandler(MissingServletRequestParameterException.class)
+  public ResponseEntity<HashMap<String, String>> handleMissingServletRequestParamterException(
+      MissingServletRequestParameterException ex) {
+    HashMap<String, String> response = new HashMap<>();
+    response.put("error", ex.getParameterName() + " parameter is missing.");
+
+    return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
   }
 
   @ExceptionHandler(Exception.class)
