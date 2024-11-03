@@ -59,4 +59,24 @@ public class UserController {
     log.info("Successfully fetched salt by Email: {}", email);
     return new ResponseEntity<>(response, HttpStatus.OK);
   }
+
+  @PostMapping("/login")
+  public ResponseEntity<String> loginRequest(@RequestBody LoginDetails loginDetails) {
+    return userService.authenticateLogin(loginDetails.getEmail(), loginDetails.getHashPassword())
+        ? new ResponseEntity<>("Login successful", HttpStatus.OK)
+        : new ResponseEntity<>("Invalid Password", HttpStatus.UNAUTHORIZED);
+  }
+}
+
+class LoginDetails {
+  private String email;
+  private String hashPassword;
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getHashPassword() {
+    return hashPassword;
+  }
 }

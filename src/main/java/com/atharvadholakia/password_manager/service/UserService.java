@@ -45,4 +45,10 @@ public class UserService {
     log.debug("Exiting getSaltByEmail from service.");
     return user.getSalt();
   }
+
+  public boolean authenticateLogin(String email, String receivedHashPassword) {
+    User user = getUserByEmail(email);
+
+    return user.getHashedPassword().equals(receivedHashPassword);
+  }
 }
