@@ -6,6 +6,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -190,5 +191,70 @@ public class UserControllerTests {
         .andExpect(jsonPath("$.error").value("User not found with Email: " + email));
 
     verify(userService).getSaltByEmail(email);
+  }
+
+  @Test
+  public void testLoginRequest() throws Exception {
+    String email = "testemail@gmail.com";
+    String hashedPassword = "e884898da28047151d0e56f8dc62927736d6aabbdd895fcec1c812c24d8";
+
+    when(userService.authenticateLogin(email, hashedPassword)).thenReturn(true);
+
+    mockmvc
+        .perform(
+            post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    String.format(
+                        "{\"email\" : \"%s\" , \"hashedPassword\" : \"%s\"}",
+                        email, hashedPassword)))
+        .andExpect(status().isOk())
+        .andExpect(content().string("Login successful"));
+
+    verify(userService).authenticateLogin(email, hashedPassword);
+  }
+
+  @Test
+  public void testLoginRequest_InvalidPassword() throws Exception {
+    when(userService.authenticateLogin(
+            "testemail@gmail.com", "e884898da28047151d0e56f8dc62927736d6aabbdd895fcec1c812c24d8"))
+        .thenReturn(false);
+
+    mockmvc
+        .perform(
+            post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    String.format(
+                        "{\"email\" : \"%s\" , \"hashedPassword\" : \"%s\"}",
+                        "testemail@gmail.com",
+                        "e884898da28047151d0e56f8dc62927736d6aabbdd895fcec1c812c24d8")))
+        .andExpect(status().isUnauthorized())
+        .andExpect(content().string("Invalid Password"));
+
+    verify(userService)
+        .authenticateLogin(
+            "testemail@gmail.com", "e884898da28047151d0e56f8dc62927736d6aabbdd895fcec1c812c24d8");
+  }
+
+  @Test
+  public void testLoginRequest_EmailNotFound() throws Exception {
+    String email = "testemadil@gmail.com";
+    String hashedPassword = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd895fcec1c812c24d8";
+    when(userService.authenticateLogin(email, hashedPassword))
+        .thenThrow(new ResourceNotFoundException("User not found with Email: " + email));
+
+    mockmvc
+        .perform(
+            post("/api/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(
+                    String.format(
+                        "{\"email\" : \"%s\" , \"hashedPassword\" : \"%s\"}",
+                        email, hashedPassword)))
+        .andExpect(status().isNotFound())
+        .andExpect(jsonPath("$.error").value("User not found with Email: " + email));
+
+    verify(userService).authenticateLogin(email, hashedPassword);
   }
 }

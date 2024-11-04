@@ -62,21 +62,33 @@ public class UserController {
 
   @PostMapping("/login")
   public ResponseEntity<String> loginRequest(@RequestBody LoginDetails loginDetails) {
-    return userService.authenticateLogin(loginDetails.getEmail(), loginDetails.getHashPassword())
-        ? new ResponseEntity<>("Login successful", HttpStatus.OK)
-        : new ResponseEntity<>("Invalid Password", HttpStatus.UNAUTHORIZED);
+    log.info(
+        "Authenticating loginRequest with Email: {} and Hashed password: {}",
+        loginDetails.getEmail(),
+        loginDetails.getHashedPassword());
+
+    boolean isAuthenticated =
+        userService.authenticateLogin(loginDetails.getEmail(), loginDetails.getHashedPassword());
+
+    if (isAuthenticated) {
+      log.info("Authentication successful.");
+      return new ResponseEntity<>("Login successful", HttpStatus.OK);
+    } else {
+      log.info("Authentication failed.");
+      return new ResponseEntity<>("Invalid Password", HttpStatus.UNAUTHORIZED);
+    }
   }
 }
 
 class LoginDetails {
   private String email;
-  private String hashPassword;
+  private String hashedPassword;
 
   public String getEmail() {
     return email;
   }
 
-  public String getHashPassword() {
-    return hashPassword;
+  public String getHashedPassword() {
+    return hashedPassword;
   }
 }
