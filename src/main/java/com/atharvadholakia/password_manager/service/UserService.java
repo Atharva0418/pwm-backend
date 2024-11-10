@@ -39,10 +39,18 @@ public class UserService {
   }
 
   public String getSaltByEmail(String email) {
-    log.info("Calling getUserByEmail from service to get salt.");
+    log.info("Calling getUserByEmail from service to find user.");
     User user = getUserByEmail(email);
 
     log.debug("Exiting getSaltByEmail from service.");
     return user.getSalt();
+  }
+
+  public boolean authenticateLogin(String email, String receivedHashedPassword) {
+    log.info("Calling getUserByEmail from service to find user.");
+    User user = getUserByEmail(email);
+
+    log.debug("Exiting authenticateLogin from service.");
+    return user.getHashedPassword().equals(receivedHashedPassword);
   }
 }

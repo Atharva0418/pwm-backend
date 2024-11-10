@@ -2,6 +2,7 @@ package com.atharvadholakia.password_manager.controller;
 
 import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.service.UserService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.validation.Valid;
 import java.util.HashMap;
 import lombok.extern.slf4j.Slf4j;
@@ -58,5 +59,43 @@ public class UserController {
 
     log.info("Successfully fetched salt by Email: {}", email);
     return new ResponseEntity<>(response, HttpStatus.OK);
+  }
+
+  @PostMapping("/login")
+  @RateLimiter(name = "loginLimiter", fallbackMethod = "rateLimitExceeded")
+  public ResponseEntity<String> loginRequest(@RequestBody LoginDetails loginDetails) {
+    log.info(
+        "Authenticating loginRequest with Email: {} and Hashed password: {}",
+        loginDetails.getEmail(),
+        loginDetails.getHashedPassword());
+
+    boolean isAuthenticated =
+        userService.authenticateLogin(loginDetails.getEmail(), loginDetails.getHashedPassword());
+
+    if (isAuthenticated) {
+      log.info("Authentication successful.");
+      return new ResponseEntity<>("Login successful", HttpStatus.OK);
+    } else {
+      log.info("Authentication failed.");
+      return new ResponseEntity<>("Invalid Password", HttpStatus.UNAUTHORIZED);
+    }
+  }
+
+  public ResponseEntity<String> rateLimitExceeded(LoginDetails loginDetails, Throwable t) {
+    return new ResponseEntity<>(
+        "Too many login requests. Please try again later.", HttpStatus.TOO_MANY_REQUESTS);
+  }
+}
+
+class LoginDetails {
+  private String email;
+  private String hashedPassword;
+
+  public String getEmail() {
+    return email;
+  }
+
+  public String getHashedPassword() {
+    return hashedPassword;
   }
 }
