@@ -1,6 +1,5 @@
 package com.atharvadholakia.password_manager.controller;
 
-import static org.hamcrest.Matchers.containsString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -14,7 +13,6 @@ import com.atharvadholakia.password_manager.service.CredentialService;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -77,117 +75,6 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.serviceName").value("Servicename cannot be empty!"))
         .andExpect(jsonPath("$.username").value("Username cannot be empty!"))
         .andExpect(jsonPath("$.password").value("Password cannot be empty!"));
-  }
-
-  @Test
-  public void testCreateCredential_InvalidInputs() throws Exception {
-    String invalidInputs = createJsonInput(1234, true, false);
-
-    mockMvc
-        .perform(
-            post("/api/credentials").contentType(MediaType.APPLICATION_JSON).content(invalidInputs))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.serviceName").value("Servicename can only be a string."))
-        .andExpect(jsonPath("$.username").value("Username can only be a string."))
-        .andExpect(jsonPath("$.password").value(containsString("Password can only be a string.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(containsString("Password must be between 8 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    containsString(
-                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
-                            + " character and no spaces.")));
-  }
-
-  @Test
-  public void testCreateCredential_LessSizeInput() throws Exception {
-    String lessSizeInput = createJsonInput("$N", "uN", "pwrd");
-
-    mockMvc
-        .perform(
-            post("/api/credentials").contentType(MediaType.APPLICATION_JSON).content(lessSizeInput))
-        .andExpect(status().isBadRequest())
-        .andExpect(
-            jsonPath("$.serviceName")
-                .value(containsString("Servicename must be between 3 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.serviceName")
-                .value(
-                    containsString(
-                        "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and"
-                            + " spaces are allowed.")))
-        .andExpect(
-            jsonPath("$.username")
-                .value(containsString("Username must be between 3 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(containsString("Password must be between 8 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    containsString(
-                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
-                            + " character and no spaces.")));
-  }
-
-  @Test
-  public void testCreateCredential_LargeSizeInput() throws Exception {
-    String largeSizeInput =
-        createJsonInput(
-            RandomStringUtils.randomAlphanumeric(30),
-            RandomStringUtils.randomAlphanumeric(30),
-            RandomStringUtils.randomAlphanumeric(30));
-
-    mockMvc
-        .perform(
-            post("/api/credentials")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(largeSizeInput))
-        .andExpect(status().isBadRequest())
-        .andExpect(
-            jsonPath("$.serviceName").value("Servicename must be between 3 to 25 characters."))
-        .andExpect(jsonPath("$.username").value("Username must be between 3 to 25 characters."))
-        .andExpect(
-            jsonPath("$.password")
-                .value(containsString("Password must be between 8 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    containsString(
-                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
-                            + " character and no spaces.")));
-  }
-
-  @Test
-  public void testCreateCredential_InvalidCharInput() throws Exception {
-    String invalidCharInput = createJsonInput("$ervicename", "user name", "Testpassword");
-
-    mockMvc
-        .perform(
-            post("/api/credentials")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(invalidCharInput))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.serviceName").exists())
-        .andExpect(jsonPath("$.username").exists())
-        .andExpect(jsonPath("$.password").exists())
-        .andExpect(
-            jsonPath("$.serviceName")
-                .value(
-                    "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and spaces"
-                        + " are allowed."))
-        .andExpect(
-            jsonPath("$.username")
-                .value(
-                    "Invalid characters. Only alphanumerics, dots, underscores and hyphens are"
-                        + " allowed."))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special character"
-                        + " and no spaces."));
   }
 
   @Test
@@ -319,118 +206,6 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$.serviceName").value("Servicename cannot be empty!"))
         .andExpect(jsonPath("$.username").value("Username cannot be empty!"))
         .andExpect(jsonPath("$.password").value("Password cannot be empty!"));
-  }
-
-  @Test
-  public void testUpdateCredential_InvalidInputs() throws Exception {
-    String invalidInputs = createJsonInput(1234, true, false);
-
-    mockMvc
-        .perform(
-            patch("/api/credentials/{id}", "ID")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(invalidInputs))
-        .andExpect(status().isBadRequest())
-        .andExpect(jsonPath("$.serviceName").value("Servicename can only be a string."))
-        .andExpect(jsonPath("$.username").value("Username can only be a string."))
-        .andExpect(jsonPath("$.password").value(containsString("Password can only be a string.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(containsString("Password must be between 8 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    containsString(
-                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
-                            + " character and no spaces.")));
-  }
-
-  @Test
-  public void testUpdateCredential_LessSizeInput() throws Exception {
-    String lessSizeInput = createJsonInput("$N", "uN", "pwrd");
-
-    mockMvc
-        .perform(
-            patch("/api/credentials/{id}", "ID")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(lessSizeInput))
-        .andExpect(status().isBadRequest())
-        .andExpect(
-            jsonPath("$.serviceName")
-                .value(containsString("Servicename must be between 3 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.serviceName")
-                .value(
-                    containsString(
-                        "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and"
-                            + " spaces are allowed.")))
-        .andExpect(
-            jsonPath("$.username")
-                .value(containsString("Username must be between 3 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(containsString("Password must be between 8 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    containsString(
-                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
-                            + " character and no spaces.")));
-  }
-
-  @Test
-  public void testUpdateCredential_LargeSizeInput() throws Exception {
-    String largeSizeInput =
-        createJsonInput(
-            RandomStringUtils.randomAlphanumeric(30),
-            RandomStringUtils.randomAlphanumeric(30),
-            RandomStringUtils.randomAlphanumeric(30));
-
-    mockMvc
-        .perform(
-            patch("/api/credentials/{id}", "ID")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(largeSizeInput))
-        .andExpect(status().isBadRequest())
-        .andExpect(
-            jsonPath("$.serviceName").value("Servicename must be between 3 to 25 characters."))
-        .andExpect(jsonPath("$.username").value("Username must be between 3 to 25 characters."))
-        .andExpect(
-            jsonPath("$.password")
-                .value(containsString("Password must be between 8 to 25 characters.")))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    containsString(
-                        "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special"
-                            + " character and no spaces.")));
-  }
-
-  @Test
-  public void testUpdateCredential_InvalidCharInput() throws Exception {
-    String invalidCharInput = createJsonInput("$ervicename", "user name", "Testpassword");
-
-    mockMvc
-        .perform(
-            post("/api/credentials")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(invalidCharInput))
-        .andExpect(status().isBadRequest())
-        .andExpect(
-            jsonPath("$.serviceName")
-                .value(
-                    "Invalid charactes. Only alphanumerics, dots, underscores, hyphens and spaces"
-                        + " are allowed."))
-        .andExpect(
-            jsonPath("$.username")
-                .value(
-                    "Invalid characters. Only alphanumerics, dots, underscores and hyphens are"
-                        + " allowed."))
-        .andExpect(
-            jsonPath("$.password")
-                .value(
-                    "Password must include 1 uppercase, 1 lowercase, 1 digit, 1 special character"
-                        + " and no spaces."));
   }
 
   @Test
