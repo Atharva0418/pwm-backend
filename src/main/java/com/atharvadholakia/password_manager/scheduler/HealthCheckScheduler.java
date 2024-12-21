@@ -17,7 +17,7 @@ public class HealthCheckScheduler {
 
   @Scheduled(fixedRate = 12 * 60 * 1000)
   public void sendHealthCheck() {
-    String healthCheckUrl = "http://localhost:3000/api/health";
+    String healthCheckUrl = "http://localhost:8080/api/health";
 
     webClient
         .get()
