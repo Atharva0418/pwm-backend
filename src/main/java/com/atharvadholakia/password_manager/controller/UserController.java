@@ -85,6 +85,11 @@ public class UserController {
     return new ResponseEntity<>(
         "Too many login requests. Please try again later.", HttpStatus.TOO_MANY_REQUESTS);
   }
+
+  @GetMapping("/health")
+  public String healthCheck() {
+    return "Server is running.";
+  }
 }
 
 class LoginDetails {
