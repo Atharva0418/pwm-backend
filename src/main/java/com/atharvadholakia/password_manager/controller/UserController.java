@@ -2,7 +2,6 @@ package com.atharvadholakia.password_manager.controller;
 
 import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.service.UserService;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.validation.Valid;
 import java.util.HashMap;
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +61,6 @@ public class UserController {
   }
 
   @PostMapping("/login")
-  @RateLimiter(name = "loginLimiter", fallbackMethod = "rateLimitExceeded")
   public ResponseEntity<String> loginRequest(@RequestBody LoginDetails loginDetails) {
     log.info(
         "Authenticating loginRequest with Email: {} and Hashed password: {}",
@@ -84,11 +82,6 @@ public class UserController {
   public ResponseEntity<String> rateLimitExceeded(LoginDetails loginDetails, Throwable t) {
     return new ResponseEntity<>(
         "Too many login requests. Please try again later.", HttpStatus.TOO_MANY_REQUESTS);
-  }
-
-  @GetMapping("/health")
-  public String healthCheck() {
-    return "Server is running.";
   }
 }
 

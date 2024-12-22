@@ -14,18 +14,6 @@
         <logger name="org.hibernate.validator" level="OFF"/>
         <logger name="org.hibernate" level="OFF"/>
         <logger name="com.zaxxer.hikari" level="OFF" />
-        <logger name ="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition" level ="OFF"/>
-        <logger name = "io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition" level ="OFF" />
-        <logger name="reactor.netty" level="OFF" />
-        <logger name="org.springframework.web.reactive.function.client" level="OFF" />
-        <logger name="reactor.core.publisher" level="OFF" />
-        <logger name="reactor.netty.channel.FluxReceive" level="OFF" />
-        <logger name="reactor.netty.http.client.HttpClientOperations" level="OFF" />
-        <logger name="io.netty" level="OFF" />
-        <logger name="reactor-http-nio" level="OFF" />
-        <logger name="i.n.util" level="OFF" />
-        <logger name="io.netty.channel.nio" level="OFF" />
-        <logger name="i.n.handler.codec.compression" level="OFF" />
 
         <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
@@ -47,18 +35,6 @@
         <logger name="org.hibernate.validator" level="OFF"/>
         <logger name="org.hibernate" level="OFF"/>
         <logger name="com.zaxxer.hikari" level="OFF" />
-        <logger name ="io.github.resilience4j.spring6.utils.ReactorOnClasspathCondition" level ="OFF"/>
-        <logger name = "io.github.resilience4j.spring6.utils.RxJava2OnClasspathCondition" level ="OFF" />
-        <logger name="reactor.netty" level="OFF" />
-        <logger name="org.springframework.web.reactive.function.client" level="OFF" />
-        <logger name="reactor.core.publisher" level="OFF" />
-        <logger name="reactor.netty.channel.FluxReceive" level="OFF" />
-        <logger name="reactor.netty.http.client.HttpClientOperations" level="OFF" />
-        <logger name="io.netty" level="OFF" />
-        <logger name="reactor-http-nio" level="OFF" />
-        <logger name="i.n.util" level="OFF" />
-        <logger name="io.netty.channel.nio" level="OFF" />
-        <logger name="i.n.handler.codec.compression" level="OFF" />
 
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
