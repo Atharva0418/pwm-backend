@@ -28,7 +28,7 @@ WORKDIR /app
 COPY --from=build /app/build/libs/pwm-backend-0.0.1.jar /app/app.jar
 
 # Expose the port your Spring Boot app will run on
-EXPOSE 10000
+EXPOSE 3000
 
 # Set the command to run the application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

@@ -7,7 +7,7 @@ on:
     branches: main
 
 env:
-  PORT: 10000
+  PORT: 3000  
   
 jobs:
   build:
