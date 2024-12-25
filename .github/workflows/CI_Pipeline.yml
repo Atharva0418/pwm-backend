@@ -7,7 +7,7 @@ on:
     branches: main
 
 env:
-  PORT: 8080
+  PORT: 10000
   
 jobs:
   build:
