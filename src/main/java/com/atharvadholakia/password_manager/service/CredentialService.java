@@ -17,11 +17,8 @@ public class CredentialService {
     this.credentialRepository = credentialRepository;
   }
 
-  public Credential createCredential(String serviceName, String username, String password) {
-    Credential credential = new Credential(serviceName, username, password);
-
+  public Credential createCredential(String userEmail, Credential credential) {
     log.info("Calling repository from service to write to DB.");
-    credential.setPassword(password);
     credentialRepository.save(credential);
 
     log.debug("Exiting createCredential from service");
@@ -46,26 +43,25 @@ public class CredentialService {
     return existingCredential;
   }
 
-  public Credential getCredentialById(String id) {
-    log.info("Calling repository from service to get a credential with ID: {}", id);
+  public Credential getCredentialById(String credentialId) {
+    log.info("Calling repository from service to get a credential with ID: {}", credentialId);
     Credential credential =
         credentialRepository
-            .findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Credential not found with ID " + id));
-
-    credential.setPassword(credential.getPassword());
+            .findById(credentialId)
+            .orElseThrow(
+                () ->
+                    new ResourceNotFoundException("Credential not found with ID " + credentialId));
     return credential;
   }
 
-  public List<Credential> getAllCredentials() {
-    log.info("Calling repository to get all the credentials");
-    List<Credential> credentials = credentialRepository.findAll();
-    credentials.forEach(credential -> credential.setPassword(credential.getPassword()));
+  public List<Credential> getAllCredentialsByUserEmail(String email) {
+    log.info("Calling repository to get all the credentials of userId : {}", email);
+    List<Credential> credentials = credentialRepository.findByUserEmail(email);
     return credentials;
   }
 
-  public void deleteCredentialById(String id) {
-    log.info("Calling repository to delete a credential with ID: {}", id);
-    credentialRepository.deleteById(id);
+  public void deleteCredentialById(String credentialId) {
+    log.info("Calling repository to delete a credential with ID: {}", credentialId);
+    credentialRepository.deleteById(credentialId);
   }
 }

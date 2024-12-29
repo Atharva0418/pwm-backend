@@ -60,7 +60,7 @@ public class UserControllerTests {
                     createJsonInput(user.getEmail(), user.getHashedPassword(), user.getSalt())))
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.Email").value(user.getEmail()))
-        .andExpect(jsonPath("$.ID").value(user.getID()));
+        .andExpect(jsonPath("$.ID").value(user.getUserId()));
 
     verify(userService).registerUser(any(User.class));
   }

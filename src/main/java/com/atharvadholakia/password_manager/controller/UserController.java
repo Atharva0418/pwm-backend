@@ -35,12 +35,12 @@ public class UserController {
     User registeredUser = userService.registerUser(user);
 
     HashMap<String, String> response = new HashMap<>();
-    response.put("ID", registeredUser.getID());
+    response.put("userId", registeredUser.getUserId());
     response.put("Email", registeredUser.getEmail());
 
     log.info(
         "Successfully registered a user with ID: {}, Email: {}, Hashed password: {}, Salt: {}",
-        registeredUser.getID(),
+        registeredUser.getUserId(),
         registeredUser.getEmail(),
         registeredUser.getHashedPassword(),
         registeredUser.getSalt());

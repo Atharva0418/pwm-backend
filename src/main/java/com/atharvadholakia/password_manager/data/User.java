@@ -1,16 +1,22 @@
 package com.atharvadholakia.password_manager.data;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 public class User {
 
-  @Id private String ID;
+  @Id private String userId;
 
   @NotBlank(message = "Email cannot be empty!")
+  @Column(unique = true, nullable = false)
   private String email;
 
   @NotBlank(message = "Hashed password cannot be empty!")
@@ -18,6 +24,9 @@ public class User {
 
   @NotBlank(message = "Salt cannot be empty!")
   private String salt;
+
+  @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  private List<Credential> credentials;
 
   @Override
   public String toString() {
@@ -36,14 +45,14 @@ public class User {
   public User() {}
 
   public User(String email, String hashedPassword, String salt) {
-    this.ID = UUID.randomUUID().toString();
+    this.userId = UUID.randomUUID().toString();
     this.email = email;
     this.hashedPassword = hashedPassword;
     this.salt = salt;
   }
 
-  public String getID() {
-    return ID;
+  public String getUserId() {
+    return userId;
   }
 
   public String getEmail() {
