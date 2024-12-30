@@ -1,8 +1,10 @@
 package com.atharvadholakia.password_manager.service;
 
 import com.atharvadholakia.password_manager.data.Credential;
+import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
 import com.atharvadholakia.password_manager.repository.CredentialRepository;
+import com.atharvadholakia.password_manager.repository.UserRepository;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,22 @@ public class CredentialService {
 
   private final CredentialRepository credentialRepository;
 
-  public CredentialService(CredentialRepository credentialRepository) {
+  private final UserRepository userRepository;
+
+  public CredentialService(
+      CredentialRepository credentialRepository, UserRepository userRepository) {
     this.credentialRepository = credentialRepository;
+    this.userRepository = userRepository;
   }
 
-  public Credential createCredential(String userEmail, Credential credential) {
+  public Credential createCredential(String email, Credential credential) {
+    User user =
+        userRepository
+            .findByEmail(email)
+            .orElseThrow(
+                () -> new ResourceNotFoundException("User not found with Email: " + email));
+
+    credential.setUser(user);
     log.info("Calling repository from service to write to DB.");
     credentialRepository.save(credential);
 
@@ -43,14 +56,12 @@ public class CredentialService {
     return existingCredential;
   }
 
-  public Credential getCredentialById(String credentialId) {
-    log.info("Calling repository from service to get a credential with ID: {}", credentialId);
+  public Credential getCredentialById(String id) {
+    log.info("Calling repository from service to get a credential with ID: {}", id);
     Credential credential =
         credentialRepository
-            .findById(credentialId)
-            .orElseThrow(
-                () ->
-                    new ResourceNotFoundException("Credential not found with ID " + credentialId));
+            .findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Credential not found with ID " + id));
     return credential;
   }
 
@@ -60,8 +71,8 @@ public class CredentialService {
     return credentials;
   }
 
-  public void deleteCredentialById(String credentialId) {
-    log.info("Calling repository to delete a credential with ID: {}", credentialId);
-    credentialRepository.deleteById(credentialId);
+  public void deleteCredentialById(String id) {
+    log.info("Calling repository to delete a credential with ID: {}", id);
+    credentialRepository.deleteById(id);
   }
 }

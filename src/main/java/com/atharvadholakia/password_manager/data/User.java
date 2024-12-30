@@ -13,7 +13,7 @@ import java.util.UUID;
 @Entity
 public class User {
 
-  @Id private String userId;
+  @Id private String id;
 
   @NotBlank(message = "Email cannot be empty!")
   @Column(unique = true, nullable = false)
@@ -45,14 +45,14 @@ public class User {
   public User() {}
 
   public User(String email, String hashedPassword, String salt) {
-    this.userId = UUID.randomUUID().toString();
+    this.id = UUID.randomUUID().toString();
     this.email = email;
     this.hashedPassword = hashedPassword;
     this.salt = salt;
   }
 
-  public String getUserId() {
-    return userId;
+  public String getId() {
+    return id;
   }
 
   public String getEmail() {

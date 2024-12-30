@@ -1,9 +1,7 @@
 package com.atharvadholakia.password_manager.controller;
 
 import com.atharvadholakia.password_manager.data.Credential;
-import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.service.CredentialService;
-import com.atharvadholakia.password_manager.service.UserService;
 import jakarta.validation.Valid;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -18,36 +16,31 @@ public class CredentialController {
 
   private final CredentialService credentialService;
 
-  private final UserService userService;
-
-  public CredentialController(CredentialService credentialService, UserService userService) {
+  public CredentialController(CredentialService credentialService) {
     this.credentialService = credentialService;
-    this.userService = userService;
   }
 
   @PostMapping("/{email}")
   public ResponseEntity<Credential> createCredential(
       @PathVariable String email, @Valid @RequestBody Credential credential) {
-    User user = userService.getUserByEmail(email);
 
-    credential.setUser(user);
     log.info(
         "Creating a credential with Servicename: {}, Username: {}, Password: {}.",
         credential.getServiceName(),
         credential.getUsername(),
         credential.getPassword());
     Credential createdCredential = credentialService.createCredential(email, credential);
-    log.info("Successfully created Credential with ID: {}", createdCredential.getCredentialId());
+    log.info("Successfully created Credential with ID: {}", createdCredential.getId());
     return new ResponseEntity<>(createdCredential, HttpStatus.CREATED);
   }
 
-  @PatchMapping("/{credentialId}")
+  @PatchMapping("/{id}")
   public ResponseEntity<Credential> updateCredential(
-      @PathVariable String credentialId, @Valid @RequestBody Credential credential) {
-    Credential existingCredential = credentialService.getCredentialById(credentialId);
+      @PathVariable String id, @Valid @RequestBody Credential credential) {
+    Credential existingCredential = credentialService.getCredentialById(id);
     log.info(
         "Updating a credential with ID: {}, Servicename: {}, Username: {}, Password: {}",
-        credentialId,
+        id,
         existingCredential.getServiceName(),
         existingCredential.getUsername(),
         existingCredential.getPassword());
@@ -60,19 +53,19 @@ public class CredentialController {
     log.info(
         "Successfully updated Credential with ID: {} to Servicename: {}, Username: {}, Password: {}"
             + " ",
-        credentialId,
+        id,
         updatedCredential.getServiceName(),
         updatedCredential.getUsername(),
         updatedCredential.getPassword());
     return new ResponseEntity<>(updatedCredential, HttpStatus.OK);
   }
 
-  @GetMapping("/{credentialId}")
-  public ResponseEntity<Credential> getCredentialById(@PathVariable String credentialId) {
-    log.info("Fetching credential with ID: {}", credentialId);
-    Credential credential = credentialService.getCredentialById(credentialId);
+  @GetMapping("/{id}")
+  public ResponseEntity<Credential> getCredentialById(@PathVariable String id) {
+    log.info("Fetching credential with ID: {}", id);
+    Credential credential = credentialService.getCredentialById(id);
 
-    log.info("Found credential with ID: {}", credentialId);
+    log.info("Found credential with ID: {}", id);
 
     return new ResponseEntity<>(credential, HttpStatus.OK);
   }
@@ -85,13 +78,13 @@ public class CredentialController {
     return new ResponseEntity<>(credentials, HttpStatus.OK);
   }
 
-  @DeleteMapping("/{credentialId}")
-  public ResponseEntity<Void> deleteCredentialById(@PathVariable String credentialId) {
-    log.info("Deleting a credential with ID: {}", credentialId);
-    credentialService.getCredentialById(credentialId);
-    credentialService.deleteCredentialById(credentialId);
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteCredentialById(@PathVariable String id) {
+    log.info("Deleting a credential with ID: {}", id);
+    credentialService.getCredentialById(id);
+    credentialService.deleteCredentialById(id);
 
-    log.info("Successfully deleted credential with ID: {}", credentialId);
+    log.info("Successfully deleted credential with ID: {}", id);
 
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }

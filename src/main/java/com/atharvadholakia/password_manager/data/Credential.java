@@ -3,19 +3,16 @@ package com.atharvadholakia.password_manager.data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import java.util.UUID;
 
 @Entity
 public class Credential {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private String credentialId;
+  @Id private String id;
 
   @NotBlank(message = "Servicename cannot be empty!")
   private String serviceName;
@@ -45,16 +42,19 @@ public class Credential {
         + '\'';
   }
 
-  public Credential() {}
+  public Credential() {
+    this.id = UUID.randomUUID().toString();
+  }
 
   public Credential(String serviceName, String username, String password) {
+    this.id = UUID.randomUUID().toString();
     this.serviceName = serviceName.trim();
     this.username = username;
     this.password = password;
   }
 
-  public String getCredentialId() {
-    return credentialId;
+  public String getId() {
+    return id;
   }
 
   public String getServiceName() {
@@ -73,8 +73,8 @@ public class Credential {
     return user;
   }
 
-  public void setCredentialId(String credentialId) {
-    this.credentialId = credentialId;
+  public void setId(String id) {
+    this.id = id;
   }
 
   public void setUsername(String username) {
