@@ -20,16 +20,16 @@ public class CredentialController {
     this.credentialService = credentialService;
   }
 
-  @PostMapping
-  public ResponseEntity<Credential> createCredential(@Valid @RequestBody Credential credential) {
+  @PostMapping("/{email}")
+  public ResponseEntity<Credential> createCredential(
+      @PathVariable String email, @Valid @RequestBody Credential credential) {
+
     log.info(
         "Creating a credential with Servicename: {}, Username: {}, Password: {}.",
         credential.getServiceName(),
         credential.getUsername(),
         credential.getPassword());
-    Credential createdCredential =
-        credentialService.createCredential(
-            credential.getServiceName(), credential.getUsername(), credential.getPassword());
+    Credential createdCredential = credentialService.createCredential(email, credential);
     log.info("Successfully created Credential with ID: {}", createdCredential.getId());
     return new ResponseEntity<>(createdCredential, HttpStatus.CREATED);
   }
@@ -70,10 +70,10 @@ public class CredentialController {
     return new ResponseEntity<>(credential, HttpStatus.OK);
   }
 
-  @GetMapping
-  public ResponseEntity<List<Credential>> getAllCredentials() {
+  @GetMapping("/user/{email}")
+  public ResponseEntity<List<Credential>> getAllCredentialsByUserEmail(@PathVariable String email) {
     log.info("Fetching all credentials");
-    List<Credential> credentials = credentialService.getAllCredentials();
+    List<Credential> credentials = credentialService.getAllCredentialsByUserEmail(email);
     log.info("Successfully fetched {} credentials", credentials.size());
     return new ResponseEntity<>(credentials, HttpStatus.OK);
   }

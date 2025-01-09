@@ -48,20 +48,24 @@ public class CredentialControllerTests {
   @Test
   public void testCreateCredential() throws Exception {
     Credential credential = new Credential("TestserviceName", "Testusername", "Testpassword@1");
-    when(credentialService.createCredential("TestserviceName", "Testusername", "Testpassword@1"))
+    when(credentialService.createCredential(eq("testemail@gmail.com"), any(Credential.class)))
         .thenReturn(credential);
 
     mockMvc
         .perform(
-            post("/api/credentials")
+            post("/api/credentials/{email}", "testemail@gmail.com")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(createJsonInput("TestserviceName", "Testusername", "Testpassword@1")))
+                .content(
+                    createJsonInput(
+                        credential.getServiceName(),
+                        credential.getUsername(),
+                        credential.getPassword())))
         .andExpect(status().isCreated())
-        .andExpect(jsonPath("$.serviceName").value("TestserviceName"))
-        .andExpect(jsonPath("$.username").value("Testusername"))
-        .andExpect(jsonPath("$.password").value("Testpassword@1"));
+        .andExpect(jsonPath("$.serviceName").value(credential.getServiceName()))
+        .andExpect(jsonPath("$.username").value(credential.getUsername()))
+        .andExpect(jsonPath("$.password").value(credential.getPassword()));
 
-    verify(credentialService).createCredential("TestserviceName", "Testusername", "Testpassword@1");
+    verify(credentialService).createCredential(eq("testemail@gmail.com"), any(Credential.class));
   }
 
   @Test
@@ -70,7 +74,9 @@ public class CredentialControllerTests {
 
     mockMvc
         .perform(
-            post("/api/credentials").contentType(MediaType.APPLICATION_JSON).content(nullInputs))
+            post("/api/credentials/{email}", "testemail@gmail.com")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(nullInputs))
         .andExpect(status().isBadRequest())
         .andExpect(jsonPath("$.serviceName").value("Servicename cannot be empty!"))
         .andExpect(jsonPath("$.username").value("Username cannot be empty!"))
@@ -107,17 +113,19 @@ public class CredentialControllerTests {
   }
 
   @Test
-  public void testGetAllCredentials() throws Exception {
+  public void testGetAllCredentialsByUserEmail() throws Exception {
     Credential credential1 = new Credential("TestserviceName1", "Testusername1", "Testpassword@11");
     Credential credential2 = new Credential("TestserviceName2", "Testusername2", "Testpassword@12");
     List<Credential> credentials = Arrays.asList(credential1, credential2);
 
-    when(credentialService.getAllCredentials()).thenReturn(credentials);
+    when(credentialService.getAllCredentialsByUserEmail("testemail@gmail.com"))
+        .thenReturn(credentials);
 
     mockMvc
-        .perform(get("/api/credentials").accept(MediaType.APPLICATION_JSON))
+        .perform(
+            get("/api/credentials/user/{email}", "testemail@gmail.com")
+                .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
-        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$[0].id").value(credential1.getId()))
         .andExpect(jsonPath("$[0].serviceName").value("TestserviceName1"))
         .andExpect(jsonPath("$[0].username").value("Testusername1"))
@@ -127,15 +135,16 @@ public class CredentialControllerTests {
         .andExpect(jsonPath("$[1].username").value("Testusername2"))
         .andExpect(jsonPath("$[1].password").value("Testpassword@12"));
 
-    verify(credentialService).getAllCredentials();
+    verify(credentialService).getAllCredentialsByUserEmail("testemail@gmail.com");
   }
 
   @Test
-  public void testGetAllCredentials_EmptyList() throws Exception {
-    when(credentialService.getAllCredentials()).thenReturn(Collections.emptyList());
+  public void testGetAllCredentialsByUserEmail_EmptyList() throws Exception {
+    when(credentialService.getAllCredentialsByUserEmail("testemail@gmail.com"))
+        .thenReturn(Collections.emptyList());
 
     mockMvc
-        .perform(get("/api/credentials"))
+        .perform(get("/api/credentials/user/{email}", "testemail@gmail.com"))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$").isEmpty());
@@ -143,33 +152,33 @@ public class CredentialControllerTests {
 
   @Test
   public void testUpdateCredential() throws Exception {
-    String credentialID = "1234";
+    String id = "1234";
     Credential existingCredential =
         new Credential("TestServicename1", "TestUsername1", "TestPassword@1");
-    existingCredential.setId(credentialID);
+    existingCredential.setId(id);
 
     Credential updatedCredential =
         new Credential("UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
-    updatedCredential.setId(credentialID);
+    updatedCredential.setId(id);
 
-    when(credentialService.getCredentialById(credentialID)).thenReturn(existingCredential);
+    when(credentialService.getCredentialById(id)).thenReturn(existingCredential);
     when(credentialService.updateCredential(
             existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1"))
         .thenReturn(updatedCredential);
 
     mockMvc
         .perform(
-            patch("/api/credentials/{id}", credentialID)
+            patch("/api/credentials/{id}", id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(
                     createJsonInput("UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1")))
         .andExpect(status().isOk())
-        .andExpect(jsonPath("$.id").value(credentialID))
+        .andExpect(jsonPath("$.id").value(id))
         .andExpect(jsonPath("$.serviceName").value(updatedCredential.getServiceName()))
         .andExpect(jsonPath("$.username").value(updatedCredential.getUsername()))
         .andExpect(jsonPath("$.password").value(updatedCredential.getPassword()));
 
-    verify(credentialService).getCredentialById(credentialID);
+    verify(credentialService).getCredentialById(id);
     verify(credentialService)
         .updateCredential(
             existingCredential, "UpdatedServiceName", "UpdatedUsername", "UpdatedPassword@1");
@@ -210,19 +219,17 @@ public class CredentialControllerTests {
 
   @Test
   public void testDeleteCredentialByID() throws Exception {
-    String credentialID = "1234";
+    String id = "1234";
     Credential credential = new Credential("TestServicename1", "TestUsername1", "TestPassword@1");
-    credential.setId(credentialID);
+    credential.setId(id);
 
-    when(credentialService.getCredentialById(credentialID)).thenReturn(credential);
-    doNothing().when(credentialService).deleteCredentialById(credentialID);
+    when(credentialService.getCredentialById(id)).thenReturn(credential);
+    doNothing().when(credentialService).deleteCredentialById(id);
 
-    mockMvc
-        .perform(delete("/api/credentials/{id}", credentialID))
-        .andExpect(status().isNoContent());
+    mockMvc.perform(delete("/api/credentials/{id}", id)).andExpect(status().isNoContent());
 
-    verify(credentialService).getCredentialById(credentialID);
-    verify(credentialService).deleteCredentialById(credentialID);
+    verify(credentialService).getCredentialById(id);
+    verify(credentialService).deleteCredentialById(id);
   }
 
   @Test

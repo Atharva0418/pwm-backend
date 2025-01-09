@@ -1,7 +1,11 @@
 package com.atharvadholakia.password_manager.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import java.util.UUID;
 
@@ -19,6 +23,11 @@ public class Credential {
   @NotBlank(message = "Password cannot be empty!")
   private String password;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "email", referencedColumnName = "email", nullable = false)
+  @JsonIgnore
+  private User user;
+
   @Override
   public String toString() {
     return "Credential: "
@@ -33,7 +42,9 @@ public class Credential {
         + '\'';
   }
 
-  public Credential() {}
+  public Credential() {
+    this.id = UUID.randomUUID().toString();
+  }
 
   public Credential(String serviceName, String username, String password) {
     this.id = UUID.randomUUID().toString();
@@ -58,6 +69,10 @@ public class Credential {
     return password;
   }
 
+  public User getUser() {
+    return user;
+  }
+
   public void setId(String id) {
     this.id = id;
   }
@@ -72,5 +87,9 @@ public class Credential {
 
   public void setServicename(String serviceName) {
     this.serviceName = serviceName;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }
