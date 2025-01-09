@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/credentials")
 @Slf4j
+@CrossOrigin(origins = "https://passez-gpv4.onrender.com")
 public class CredentialController {
 
   private final CredentialService credentialService;
