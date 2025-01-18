@@ -4,6 +4,7 @@ import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.exception.EmailAlreadyExistsException;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
 import com.atharvadholakia.password_manager.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +39,17 @@ public class UserService {
     return user;
   }
 
+  public User getUserById(String id) {
+    User user =
+        userRepository
+            .findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+
+    return user;
+  }
+
   public String getSaltByEmail(String email) {
-    log.info("Calling getUserByEmail from service to find user.");
+    log.info("Calling getUserByEmail from service to find user with Email: {}.", email);
     User user = getUserByEmail(email);
 
     log.debug("Exiting getSaltByEmail from service.");
@@ -52,5 +62,18 @@ public class UserService {
 
     log.debug("Exiting authenticateLogin from service.");
     return user.getHashedPassword().equals(receivedHashedPassword);
+  }
+
+  @Transactional
+  public void softDeleteUserById(String id) {
+    log.info("Calling getUserById from service to find user with id: {}.", id);
+    User user = getUserById(id);
+
+    if (user.getIsDeleted()) {
+      throw new ResourceNotFoundException("User not found with id: " + id);
+    }
+
+    log.info("Calling repository to soft delete the user by id: {}", id);
+    userRepository.softDeleteUserById(id);
   }
 }

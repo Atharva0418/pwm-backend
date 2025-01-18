@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,9 +82,11 @@ public class UserController {
     }
   }
 
-  public ResponseEntity<String> rateLimitExceeded(LoginDetails loginDetails, Throwable t) {
-    return new ResponseEntity<>(
-        "Too many login requests. Please try again later.", HttpStatus.TOO_MANY_REQUESTS);
+  @PatchMapping("/softDelete")
+  public ResponseEntity<Void> softDeleteUserById(@RequestParam String id) {
+    userService.softDeleteUserById(id);
+
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
 
