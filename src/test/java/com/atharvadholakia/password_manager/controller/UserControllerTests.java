@@ -1,9 +1,11 @@
 package com.atharvadholakia.password_manager.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -203,5 +205,16 @@ public class UserControllerTests {
         .andExpect(jsonPath("$.error").value("User not found with Email: " + email));
 
     verify(userService).authenticateLogin(email, hashedPassword);
+  }
+
+  @Test
+  public void testSoftDeleteUserById() throws Exception {
+    String id = "testUserId1234";
+
+    doNothing().when(userService).softDeleteUserById(id);
+
+    mockmvc.perform(patch("/api/softDelete").param("id", id)).andExpect(status().isNoContent());
+
+    verify(userService).softDeleteUserById(id);
   }
 }

@@ -81,7 +81,7 @@ public class User {
     this.email = email;
   }
 
-  public boolean setIsDeleted() {
-    return isDeleted;
+  public void setIsDeleted(boolean isDeleted) {
+    this.isDeleted = isDeleted;
   }
 }
