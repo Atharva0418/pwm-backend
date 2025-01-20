@@ -88,33 +88,33 @@ public class UserServiceTests {
   }
 
   @Test
-  public void testSoftDeleteUserById() throws Exception {
+  public void testSoftDeleteUserByEmail() throws Exception {
     User user =
         new User(
             "testemail@gmail.com",
             "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd895fcec1c812c24d8",
             "E9xRVzI4T3Q1Yk1XUnlLWQ==");
 
-    when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
-    doNothing().when(userRepository).softDeleteUserById(user.getId());
+    when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
+    doNothing().when(userRepository).softDeleteUserByEmail(user.getEmail());
 
-    userService.softDeleteUserById(user.getId());
+    userService.softDeleteUserByEmail(user.getEmail());
 
-    verify(userRepository).softDeleteUserById(user.getId());
+    verify(userRepository).softDeleteUserByEmail(user.getEmail());
   }
 
   @Test
-  public void testSoftDeleteUserById_NotFound() throws Exception {
-    when(userRepository.findById("notFoundId")).thenReturn(Optional.empty());
+  public void testSoftDeleteUserByEmail_NotFound() throws Exception {
+    when(userRepository.findByEmail("notFoundEmail")).thenReturn(Optional.empty());
 
     assertThrows(
-        ResourceNotFoundException.class, () -> userService.softDeleteUserById("notFoundId"));
+        ResourceNotFoundException.class, () -> userService.softDeleteUserByEmail("notFoundEmail"));
 
-    verify(userRepository).findById("notFoundId");
+    verify(userRepository).findByEmail("notFoundEmail");
   }
 
   @Test
-  public void testSoftDeleteUserById_UserAlreadyDeleted() throws Exception {
+  public void testSoftDeleteUserByEmail_UserAlreadyDeleted() throws Exception {
     User user =
         new User(
             "testemail@gmail.com",
@@ -123,11 +123,11 @@ public class UserServiceTests {
 
     user.setIsDeleted(true);
 
-    when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
+    when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
     assertThrows(
-        ResourceNotFoundException.class, () -> userService.softDeleteUserById(user.getId()));
+        ResourceNotFoundException.class, () -> userService.softDeleteUserByEmail(user.getEmail()));
 
-    verify(userRepository).findById(user.getId());
+    verify(userRepository).findByEmail(user.getEmail());
   }
 }

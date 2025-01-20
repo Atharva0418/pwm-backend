@@ -83,8 +83,8 @@ public class UserController {
   }
 
   @PatchMapping("/softDelete")
-  public ResponseEntity<Void> softDeleteUserById(@RequestParam String id) {
-    userService.softDeleteUserById(id);
+  public ResponseEntity<Void> softDeleteUserByEmail(@RequestParam String email) {
+    userService.softDeleteUserByEmail(email);
 
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }

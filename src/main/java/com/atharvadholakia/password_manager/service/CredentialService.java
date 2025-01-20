@@ -28,7 +28,7 @@ public class CredentialService {
         userRepository
             .findByEmail(email)
             .orElseThrow(
-                () -> new ResourceNotFoundException("User not found with Email: " + email));
+                () -> new ResourceNotFoundException("User not found with email: " + email));
 
     credential.setUser(user);
     log.info("Calling repository from service to write to DB.");

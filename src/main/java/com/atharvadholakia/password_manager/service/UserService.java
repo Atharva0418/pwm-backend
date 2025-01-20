@@ -36,6 +36,7 @@ public class UserService {
         existingUser.setIsDeleted(false);
         existingUser.setHashedPassword(user.getHashedPassword());
         existingUser.setSalt(user.getSalt());
+        log.info("Registering a deleted user.");
         return userRepository.save(existingUser);
       }
 
@@ -53,7 +54,7 @@ public class UserService {
         userRepository
             .findByEmail(email)
             .orElseThrow(
-                () -> new ResourceNotFoundException("User not found with Email: " + email));
+                () -> new ResourceNotFoundException("User not found with email: " + email));
 
     return user;
   }
@@ -68,7 +69,7 @@ public class UserService {
   }
 
   public String getSaltByEmail(String email) {
-    log.info("Calling getUserByEmail from service to find user with Email: {}.", email);
+    log.info("Calling getUserByEmail from service to find user with email: {}.", email);
     User user = getUserByEmail(email);
 
     log.debug("Exiting getSaltByEmail from service.");
@@ -84,16 +85,16 @@ public class UserService {
   }
 
   @Transactional
-  public void softDeleteUserById(String id) {
-    log.info("Calling getUserById from service to find user with id: {}.", id);
-    User user = getUserById(id);
+  public void softDeleteUserByEmail(String email) {
+    log.info("Calling getUserByEmail from service to find user with email: {}.", email);
+    User user = getUserByEmail(email);
 
     if (user.getIsDeleted()) {
-      throw new ResourceNotFoundException("User not found with id: " + id);
+      throw new ResourceNotFoundException("User not found with email: " + email);
     }
 
-    log.info("Calling repository to soft delete the user by id: {}", id);
-    userRepository.softDeleteUserById(id);
+    log.info("Calling repository to soft delete the user by email: {}", email);
+    userRepository.softDeleteUserByEmail(email);
     credentialRepository.deleteAllCredentialsByEmail(user.getEmail());
   }
 }

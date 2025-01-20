@@ -208,13 +208,15 @@ public class UserControllerTests {
   }
 
   @Test
-  public void testSoftDeleteUserById() throws Exception {
-    String id = "testUserId1234";
+  public void testSoftDeleteUserByEmail() throws Exception {
+    String email = "testemail@gmail.com";
 
-    doNothing().when(userService).softDeleteUserById(id);
+    doNothing().when(userService).softDeleteUserByEmail(email);
 
-    mockmvc.perform(patch("/api/softDelete").param("id", id)).andExpect(status().isNoContent());
+    mockmvc
+        .perform(patch("/api/softDelete").param("email", email))
+        .andExpect(status().isNoContent());
 
-    verify(userService).softDeleteUserById(id);
+    verify(userService).softDeleteUserByEmail(email);
   }
 }
