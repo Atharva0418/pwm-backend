@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 
 import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
+import com.atharvadholakia.password_manager.repository.CredentialRepository;
 import com.atharvadholakia.password_manager.repository.UserRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +22,8 @@ import org.mockito.MockitoAnnotations;
 public class UserServiceTests {
 
   @Mock private UserRepository userRepository;
+
+  @Mock private CredentialRepository credentialRepository;
 
   @InjectMocks private UserService userService;
 

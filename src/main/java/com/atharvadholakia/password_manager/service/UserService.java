@@ -3,8 +3,10 @@ package com.atharvadholakia.password_manager.service;
 import com.atharvadholakia.password_manager.data.User;
 import com.atharvadholakia.password_manager.exception.EmailAlreadyExistsException;
 import com.atharvadholakia.password_manager.exception.ResourceNotFoundException;
+import com.atharvadholakia.password_manager.repository.CredentialRepository;
 import com.atharvadholakia.password_manager.repository.UserRepository;
 import jakarta.transaction.Transactional;
+import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +16,32 @@ public class UserService {
 
   private final UserRepository userRepository;
 
-  public UserService(UserRepository userRepository) {
+  private final CredentialRepository credentialRepository;
+
+  public UserService(UserRepository userRepository, CredentialRepository credenitalRepository) {
     this.userRepository = userRepository;
+    this.credentialRepository = credenitalRepository;
   }
 
   public User registerUser(User user) {
     log.info("Calling repository from service to register a user.");
-    if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+
+    Optional<User> existingUserOptional = userRepository.findByEmail(user.getEmail());
+
+    if (existingUserOptional.isPresent()) {
+      User existingUser = existingUserOptional.get();
+
+      if (existingUser.getIsDeleted()) {
+
+        existingUser.setIsDeleted(false);
+        existingUser.setHashedPassword(user.getHashedPassword());
+        existingUser.setSalt(user.getSalt());
+        return userRepository.save(existingUser);
+      }
+
       throw new EmailAlreadyExistsException("Email already exists.");
     }
+
     User newUser = new User(user.getEmail(), user.getHashedPassword(), user.getSalt());
 
     log.debug("Exiting registerUser from service.");
@@ -75,5 +94,6 @@ public class UserService {
 
     log.info("Calling repository to soft delete the user by id: {}", id);
     userRepository.softDeleteUserById(id);
+    credentialRepository.deleteAllCredentialsByEmail(user.getEmail());
   }
 }

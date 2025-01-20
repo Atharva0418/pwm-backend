@@ -84,4 +84,12 @@ public class User {
   public void setIsDeleted(boolean isDeleted) {
     this.isDeleted = isDeleted;
   }
+
+  public void setSalt(String salt) {
+    this.salt = salt;
+  }
+
+  public void setHashedPassword(String hashedPassword) {
+    this.hashedPassword = hashedPassword;
+  }
 }
