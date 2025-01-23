@@ -88,6 +88,24 @@ public class UserServiceTests {
   }
 
   @Test
+  public void testAuthenticateLogin_DeletedUser() throws Exception {
+    User user =
+        new User(
+            "testemail@gmail.com",
+            "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd895fcec1c812c24d8",
+            "E9xRVzI4T3Q1Yk1XUnlLWQ==");
+    user.setIsDeleted(true);
+
+    when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
+
+    assertThrows(
+        ResourceNotFoundException.class,
+        () -> userService.authenticateLogin(user.getEmail(), user.getHashedPassword()));
+
+    verify(userRepository).findByEmail(user.getEmail());
+  }
+
+  @Test
   public void testSoftDeleteUserByEmail() throws Exception {
     User user =
         new User(

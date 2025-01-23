@@ -80,6 +80,10 @@ public class UserService {
     log.info("Calling getUserByEmail from service to find user.");
     User user = getUserByEmail(email);
 
+    if (user.getIsDeleted()) {
+      throw new ResourceNotFoundException("User not found with email: " + email);
+    }
+
     log.debug("Exiting authenticateLogin from service.");
     return user.getHashedPassword().equals(receivedHashedPassword);
   }
