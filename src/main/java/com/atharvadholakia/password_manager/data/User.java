@@ -25,6 +25,8 @@ public class User {
   @NotBlank(message = "Salt cannot be empty!")
   private String salt;
 
+  private boolean isDeleted = false;
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
   private List<Credential> credentials;
 
@@ -65,5 +67,29 @@ public class User {
 
   public String getSalt() {
     return salt;
+  }
+
+  public boolean getIsDeleted() {
+    return isDeleted;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public void setIsDeleted(boolean isDeleted) {
+    this.isDeleted = isDeleted;
+  }
+
+  public void setSalt(String salt) {
+    this.salt = salt;
+  }
+
+  public void setHashedPassword(String hashedPassword) {
+    this.hashedPassword = hashedPassword;
   }
 }

@@ -1,6 +1,6 @@
 services:
   app:
-    image: pwm-backend-img
+    build: .
     container_name: pwm-backend-app
     ports:
       - 3000:3000
@@ -8,6 +8,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/test
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
+      PORT: 3000
     depends_on:
       - db
     networks:
