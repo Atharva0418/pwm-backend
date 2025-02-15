@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @Slf4j
-@CrossOrigin(origins = "https://passez-gpv4.onrender.com")
+@CrossOrigin(origins = "${CO}")
 public class UserController {
 
   private final UserService userService;
