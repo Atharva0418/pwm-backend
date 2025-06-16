@@ -85,3 +85,8 @@ Download according to your OS.
   ```
   docker compose up
   ```
+
+  ### Userflow:
+
+  ![User_flow](docs/images/Userflow.png)
+  
