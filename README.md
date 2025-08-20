@@ -5,9 +5,8 @@ It is designed to store and manage unique passwords so that you do not have to r
 
 ### Architecture:
 
-  ![User_flow](docs/images/Userflow.png)
+![Architecture](docs/images/architecture.png)
 
-  
 ### How to run the server locally:
 
 - Clone the git repository from the Github to your local machine. You can do this by
@@ -43,7 +42,7 @@ gradle test
 ```
 
 - To run a specific test file e.g only run tests in CredentialControllerTests file, run the following command.
-Replace CredentialControllerTests with the name of the test file you want to run.
+  Replace CredentialControllerTests with the name of the test file you want to run.
 
 ```
 gradle test --tests "CredentialControllerTests"
@@ -58,7 +57,7 @@ gradle test --tests "CredentialControllerTests.testCreateCredential"
 ### How to setup MySql database:
 
 - Install MySql(v8.0.39)(might change in the future) from [MySql official website](https://dev.mysql.com/downloads/mysql/)
-Download according to your OS.
+  Download according to your OS.
 
 - Create a MySql server with username and password.
 
