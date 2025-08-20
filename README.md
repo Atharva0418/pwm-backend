@@ -3,6 +3,11 @@
 Password Manager: A secure and user-friendly application built with the Spring Boot framework.
 It is designed to store and manage unique passwords so that you do not have to remember them.
 
+### Architecture:
+
+  ![User_flow](docs/images/Userflow.png)
+
+  
 ### How to run the server locally:
 
 - Clone the git repository from the Github to your local machine. You can do this by
@@ -85,8 +90,3 @@ Download according to your OS.
   ```
   docker compose up
   ```
-
-  ### Userflow:
-
-  ![User_flow](docs/images/Userflow.png)
-  
