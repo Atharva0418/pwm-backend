@@ -1,15 +1,18 @@
 # Stage 1: Build Stage
-FROM openjdk:21-jdk-slim AS build
+FROM eclipse-temurin:21-jdk AS build
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the Gradle wrapper and other Gradle files, if using Gradle (or replace with Maven files if using Maven)
+# Copy the Gradle wrapper and related files
 COPY gradlew gradlew
 COPY gradle gradle
 COPY build.gradle settings.gradle /app/
 
-# Download dependencies, helps with Docker caching
+# Make gradlew executable (required!)
+RUN chmod +x gradlew
+
+# Download dependencies
 RUN ./gradlew dependencies --no-daemon || true
 
 # Copy the source code
@@ -19,16 +22,15 @@ COPY src src
 RUN ./gradlew bootJar --no-daemon
 
 # Stage 2: Production Image
-FROM eclipse-temurin:21-jre-alpine
+FROM eclipse-temurin:21-jre-jammy
 
-# Set working directory
 WORKDIR /app
 
-# Copy only the built JAR from the build stage
-COPY --from=build /app/build/libs/pwm-backend-0.0.1.jar /app/app.jar
+# Copy only the built JAR
+COPY --from=build /app/build/libs/*.jar /app/app.jar
 
-# Expose the port your Spring Boot app will run on
+# Expose the port your Spring Boot app runs on
 EXPOSE 3000
 
-# Set the command to run the application
+# Start the application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
